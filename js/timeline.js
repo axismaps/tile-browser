@@ -3,25 +3,10 @@ function buildTimeline() {
   
   var tData = _.toArray(data.maps);
   console.log(tData);
-  var bins = 1200 / 12;
+  var binNum = 1200 / 12;
+  var binWidth = 12;
   
-  // var x = d3.scale.linear()
-    // .domain([1600, 1900])
-    // .range([0, 1200]);
-    
-  // var hData = d3.layout.histogram()
-    // .bins(x.ticks(bins))
-    // (tData);
-    
-  // var y = d3.scale.linear()
-    // .domain([0, d3.max(hData, function(d) { return d.y; })])
-    // .range([100, 0]);
-    
-  // var xAxis = d3.svg.axis()
-    // .scale(x)
-    // .orient('bottom');
-  
-  
+  // sortedData //This needs to be an array of arrays with the mapnumber somehow embedded in it
   
   
   var t = d3.select('.timeline')
@@ -39,20 +24,26 @@ function buildTimeline() {
   var xAxis = d3.svg.axis()
     .scale(xScale)
     .orient('bottom')
-    .ticks(bins/10)
+    .ticks(binNum/10)
     .tickSize(5)
     .tickFormat(d3.format(".0f"));
     
   d3.select('.timeline--svg').append('g')
     .attr('class', 'x-axis')
     .call(xAxis);
+    
+  var bins = t.selectAll('g.bin')
+    .data(sortedData)
+    .enter().append('g')
+    .attr('class', 'bin')
+    .attr('transform', function(d, i) { return 'translate(' + (i * binWidth) + ', 0)' });
   
   t.selectAll('.dot')
-    .data(tData)
+    .data(function(d) { return d })
     .enter().append('circle')
     .attr('class', 'timeline--dot')
     .attr('r', 5)
-    .attr('cx', function(d) { return xScale(parseInt(d.date)); })
+    .attr('cx', binWidth/2)
     .attr('cy', function(d, i) { return i; })
     .style('fill', 'black');
 }
