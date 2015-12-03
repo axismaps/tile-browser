@@ -18,8 +18,8 @@ function initData() {
 }
 
 function initCustomEvents() {
-  $(document).on('highlight:', function() {
-    
+  $(document).on('highlight:', function(e, map) {
+    console.log(map);
   });
 
   $(document).on('select:', function(e, map) {

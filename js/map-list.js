@@ -1,5 +1,4 @@
 function buildMapList() {
-  console.log(data.maps);
   _.each(data.maps, function(v, k) {
     var listItem = $('<li>').appendTo($('.map-list--list'))
       
