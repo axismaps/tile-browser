@@ -22,8 +22,8 @@ function initCustomEvents() {
     
   });
 
-  $(document).on('select:', function() {
-    
+  $(document).on('select:', function(e, map) {
+    showMetadata(map);
   });
   
   $(document).on('filter:', function() {

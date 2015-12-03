@@ -1,9 +1,9 @@
-var map = {};
+var atlas = {};
 
 function initMap() {
-  map = L.map('map').setView([40, -100], 4);
+  atlas = L.map('map').setView([40, -100], 4);
 
-  L.tileLayer('//stamen-tiles-{s}.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}.png').addTo( map );
+  L.tileLayer('//stamen-tiles-{s}.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}.png').addTo(atlas);
 }
 
 function buildMap() {
