@@ -1,7 +1,7 @@
 var atlas = {};
 
 function initMap() {
-  atlas = L.map('atlas').setView([40, -100], 4);
+  atlas = L.map('atlas').setView([40, -80], 4);
 
   L.tileLayer('//stamen-tiles-{s}.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}.png').addTo(atlas);
 }
