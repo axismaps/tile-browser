@@ -18,7 +18,11 @@ function buildMap() {
       [map.bottom, map.left],
       [map.top, map.right]
     ]).toGeoJSON();
-        
+    
+    rect.properties = {
+      number: parseInt(map.number)
+    }
+
     L.geoJson(rect, {
       style: function(f) {
         return {
@@ -28,8 +32,8 @@ function buildMap() {
       },
       onEachFeature: function(f, l) {
         l.on({
-          click: function() { $(document).trigger('select:', this) },
-          mouseover: function() { $(document).trigger('highlight:', this) }
+          click: function() { $(document).trigger('select:', f.properties.number) },
+          mouseover: function() { $(document).trigger('highlight:', f.properties.number) }
         });
       }
     }).addTo(atlas);
