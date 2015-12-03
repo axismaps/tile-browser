@@ -1,5 +1,17 @@
 var atlas = {};
 
+var rectStyle = {
+  fill: false,
+  color: '#a6bddb',
+  weight: 1
+};
+
+var highlight = {
+  color: '#de2d26',
+  weight: 5,
+  opacity: 0.8
+};
+
 function initMap() {
   atlas = L.map('atlas').setView([40, -80], 4);
 
@@ -25,10 +37,7 @@ function buildMap() {
 
     L.geoJson(rect, {
       style: function(f) {
-        return {
-          fill: false,
-          className: 'atlas--map-area'
-        }
+        return rectStyle
       },
       onEachFeature: function(f, l) {
         l.on({

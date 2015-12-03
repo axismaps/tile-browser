@@ -19,7 +19,10 @@ function initData() {
 
 function initCustomEvents() {
   $(document).on('highlight:', function(e, mapNumber) {
-    console.log(mapNumber);
+    // console.log(mapNumber);
+    var leafletLayer = findLeafletLayer(mapNumber);
+    leafletLayer.setStyle(highlight);
+    console.log(leafletLayer);
   });
 
   $(document).on('select:', function(e, mapNumber) {
