@@ -16,6 +16,7 @@ function initData() {
     data.maps = _.indexBy( Papa.parse( m, { header: true } ).data, "number" );
     buildMap();
     buildMapList();
+    buildTimeline();
   });
 }
 
