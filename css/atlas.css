@@ -1,8 +1,9 @@
 .atlas--map-area {
-  stroke: '#a6bddb';
+  stroke: #a6bddb;
   stroke-width: 2;
 }
 
 .atlas--map-area:hover {
   stroke: red;
+  stroke-width: 5;
 }
