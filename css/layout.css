@@ -2,3 +2,38 @@
 Axis Maps
 - Project specific Layout CSS rules
 -------------------------*/
+
+.main-container {
+  display: flex;
+  height: 80%;
+}
+
+.map-list {
+  background-color: blue;
+  width: 30%;
+}
+
+.map {
+  background-color: red;
+  width: 100%; /*basically everything not already taken */
+}
+
+.metadata {
+  background-color: green;
+  width: 40%;
+}
+
+.search-container {
+  height: 20%;
+  width: 100%;
+}
+
+.search {
+  background-color: yellow;
+  height: 40%;
+}
+
+.timeline {
+  background-color: black;
+  height: 60%;
+}

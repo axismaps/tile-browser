@@ -8,6 +8,8 @@ Axis Maps
 html,
 body {
   height: 100%;
+  margin: 0;
+  padding: 0;
   width: 100%;
 }
 
@@ -73,12 +75,6 @@ italic, em {
 .horz-bar {
   border-top: 1px solid; /* Border color/opacity should be specified in theme.css */
   margin: 5px 0;
-  width: 100%;
-}
-
-.map {
-  height: 100%;
-  position: relative;
   width: 100%;
 }
 
