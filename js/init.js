@@ -2,7 +2,7 @@ var data = {
   maps: {}
 };
 
-var selected;
+var selected = 0;
 
 $(document).ready(function() {
   initData();
@@ -23,12 +23,16 @@ function initCustomEvents() {
   $(document).on('highlight:', function(e, mapNumber) {
     var leafletLayer = findLeafletLayer(mapNumber);
     leafletLayer.setStyle(highlight);
+    
+    $('.map-list--link[data-number=' + mapNumber + ']').addClass('selected');
   });
   
   $(document).on('dehighlight:', function(e, mapNumber) {
     if(selected != mapNumber) {
       var leafletLayer = findLeafletLayer(mapNumber);
       leafletLayer.setStyle(rectStyle);
+      
+      $('.map-list--link[data-number=' + mapNumber + ']').removeClass('selected');
     }
   });
 
@@ -42,6 +46,8 @@ function initCustomEvents() {
     
       var leafletLayer = findLeafletLayer(mapNumber);
       leafletLayer.setStyle(highlight);
+      
+      $('.map-list--link[data-number=' + mapNumber + ']').addClass('selected');
     }
   });
   

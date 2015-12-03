@@ -19,12 +19,11 @@ body{
 
 /* Colors */
 a {
-  color: #707715;
 }
 
 a:hover,
 a:visited {
-  color: #707715;
+ 
 }
 
 /* if the highlight color changes based on JS, don't use this class, use js-highlight-color instead */
