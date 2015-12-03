@@ -14,12 +14,24 @@ function buildMap() {
       fill: false
     };
     
-    L.rectangle([
+    var rect = L.rectangle([
       [map.bottom, map.left],
       [map.top, map.right]
-    ], options)
-      .addTo(atlas)
-      .on('mouseover', function() { $(document).trigger('highlight:', this) })
-      .on('click', function() { $(document).trigger('select:', this) });
+    ]).toGeoJSON();
+        
+    L.geoJson(rect, {
+      style: function(f) {
+        return {
+          fill: false,
+          className: 'atlas--map-area'
+        }
+      },
+      onEachFeature: function(f, l) {
+        l.on({
+          click: function() { $(document).trigger('select:', this) },
+          mouseover: function() { $(document).trigger('highlight:', this) }
+        });
+      }
+    }).addTo(atlas);
   });
 }
