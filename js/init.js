@@ -18,7 +18,17 @@ function initData() {
 }
 
 function initCustomEvents() {
+  $(document).on('highlight:', function() {
+    
+  });
+
+  $(document).on('select:', function() {
+    
+  });
   
+  $(document).on('filter:', function() {
+    
+  });
 }
 
 function initUIEvents() {
