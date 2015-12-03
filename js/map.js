@@ -5,3 +5,7 @@ function initMap() {
 
   L.tileLayer('//stamen-tiles-{s}.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}.png').addTo( map );
 }
+
+function buildMap() {
+  
+}
