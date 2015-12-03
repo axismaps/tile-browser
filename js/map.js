@@ -10,7 +10,8 @@ function buildMap() {
   console.log(data.maps);
   _.each(data.maps, function(map) {
     var options = {
-      className: 'atlas--map-area'
+      className: 'atlas--map-area',
+      fill: false
     };
     
     L.rectangle([
