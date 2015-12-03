@@ -18,12 +18,12 @@ function initData() {
 }
 
 function initCustomEvents() {
-  $(document).on('highlight:', function(e, map) {
-    console.log(map);
+  $(document).on('highlight:', function(e, mapNumber) {
+    console.log(mapNumber);
   });
 
-  $(document).on('select:', function(e, map) {
-    showMetadata(map);
+  $(document).on('select:', function(e, mapNumber) {
+    showMetadata(data.maps[mapNumber]);
   });
   
   $(document).on('filter:', function() {
