@@ -7,6 +7,7 @@
     
     <!-- build:css css/{{site}}.css -->
     <link rel="stylesheet" href="bower_components/normalize.css/normalize.css" />
+    <link rel="stylesheet" href="bower_components/leaflet/dist/leaflet.css" />
     
     <link rel="stylesheet" href="css/default.css" />
     <link rel="stylesheet" href="css/utils.css" />
@@ -19,7 +20,7 @@
     <div class="l-row main-container">
       <div class="map-list">
       </div>
-      <div class="map">
+      <div class="map" id="map">
       </div>
       <div class="metadata">
       </div>
@@ -33,8 +34,10 @@
   
   <!-- build:js js/{{site}}.js -->
   <script src="bower_components/jquery/dist/jquery.js"></script>
+  <script src="bower_components/leaflet/dist/leaflet.js"></script>
   <script src="bower_components/underscore/underscore-min.js"></script>
   
+  <script src="js/map.js"></script>
   <script src="js/init.js"></script>
   <!-- endbuild -->
   </body>
