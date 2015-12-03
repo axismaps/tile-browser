@@ -3,7 +3,8 @@ var atlas = {};
 var rectStyle = {
   fill: false,
   color: '#a6bddb',
-  weight: 1
+  weight: 1,
+  opacity: 0.5
 };
 
 var highlight = {
@@ -19,7 +20,6 @@ function initMap() {
 }
 
 function buildMap() {
-  console.log(data.maps);
   _.each(data.maps, function(map) {
     var options = {
       className: 'atlas--map-area',
@@ -42,7 +42,8 @@ function buildMap() {
       onEachFeature: function(f, l) {
         l.on({
           click: function() { $(document).trigger('select:', f.properties.number) },
-          mouseover: function() { $(document).trigger('highlight:', f.properties.number) }
+          mouseover: function() { $(document).trigger('highlight:', f.properties.number) },
+          mouseout: function() { $(document).trigger('dehighlight:', f.properties.number) }
         });
       }
     }).addTo(atlas);
