@@ -31,7 +31,7 @@ function initCustomEvents() {
   });
   
   $(document).on('dehighlight:', function(e, mapNumber) {
-    if(selected != mapNumber && mapNumber !== 0) {
+    if(selected !== mapNumber && mapNumber !== 0) {
       var leafletLayer = findLeafletLayer(mapNumber);
       leafletLayer.setStyle(rectStyle);
       
@@ -42,7 +42,7 @@ function initCustomEvents() {
   });
 
   $(document).on('select:', function(e, mapNumber) {
-    if(selected != mapNumber) {
+    if(selected !== mapNumber) {
       var old = selected;
       selected = mapNumber;
       $(document).trigger('dehighlight:', old);
