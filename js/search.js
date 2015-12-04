@@ -7,7 +7,7 @@ function buildSearch() {
       
       addSearchTerm(value);
       $(this)
-        .width($(this).width() - $('.search--term').last().width() - 10)
+        .width($(this).width() - $('.search--term').last().width() - 15)
         .val('');
     }
   });

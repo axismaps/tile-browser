@@ -24,7 +24,9 @@
 }
 
 .search--term {
+  background-color: #ccc;
   box-sizing: border-box;
   line-height: 35px;
+  margin-right: 5px;
   padding: 5px;
 }
