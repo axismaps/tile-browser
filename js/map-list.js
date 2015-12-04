@@ -1,5 +1,5 @@
 function buildMapList() {
-  var dateSorted = _.groupBy(data.maps, function(v, k) {
+  var dateSorted = _.groupBy(data.filtered, function(v, k) {
     return +v.date;
   });
   

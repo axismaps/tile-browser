@@ -1,5 +1,6 @@
 var data = {
-  maps: {}
+  maps: {},
+  filtered: {}
 };
 
 var selected = 0;
@@ -14,6 +15,7 @@ $(document).ready(function() {
 function initData() {
   $.get('data/maps.csv', function(m) {
     data.maps = _.indexBy( Papa.parse( m, { header: true } ).data, "number" );
+    data.filtered = data.maps;
     buildMap();
     buildMapList();
     buildTimeline();
@@ -47,7 +49,7 @@ function initCustomEvents() {
       selected = mapNumber;
       $(document).trigger('dehighlight:', old);
       
-      showMetadata(data.maps[mapNumber]);
+      showMetadata(data.filtered[mapNumber]);
     
       selectMap(mapNumber);
       $('.map-list--link[data-number=' + mapNumber + ']').addClass('selected');

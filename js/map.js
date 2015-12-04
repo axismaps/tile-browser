@@ -20,7 +20,7 @@ function initMap() {
 }
 
 function buildMap() {
-  _.each(data.maps, function(map) {
+  _.each(data.filtered, function(map) {
     var options = {
       className: 'atlas--map-area',
       fill: false
