@@ -32,7 +32,7 @@ function buildMap() {
     ]).toGeoJSON();
     
     rect.properties = {
-      number: parseInt(map.number)
+      number: +map.number
     }
 
     L.geoJson(rect, {
