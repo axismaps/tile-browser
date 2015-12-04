@@ -26,6 +26,8 @@ function initCustomEvents() {
     leafletLayer.setStyle(highlight);
     
     $('.map-list--link[data-number=' + mapNumber + ']').addClass('selected');
+    
+    highlightDot(mapNumber);
   });
   
   $(document).on('dehighlight:', function(e, mapNumber) {
@@ -34,6 +36,8 @@ function initCustomEvents() {
       leafletLayer.setStyle(rectStyle);
       
       $('.map-list--link[data-number=' + mapNumber + ']').removeClass('selected');
+      
+      dehighlightDot(mapNumber);
     }
   });
 
@@ -49,6 +53,8 @@ function initCustomEvents() {
       leafletLayer.setStyle(highlight);
       
       $('.map-list--link[data-number=' + mapNumber + ']').addClass('selected');
+      
+      highlightDot(mapNumber);
     }
   });
   

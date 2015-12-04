@@ -9,3 +9,12 @@
   stroke: #000;
   stroke-width: 2;
 }
+
+.timeline--dot {
+  cursor: pointer;
+  fill: #000;
+}
+
+.timeline--dot.highlight {
+  fill: #de2d26;
+}

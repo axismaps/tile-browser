@@ -10,7 +10,6 @@ function buildTimeline() {
     return +v.date - mod;
   }));
   var dateDomain = [+binnedData[0][0].date - binWidth*2, +binnedData[binnedData.length-1][0].date + binWidth*2];
-  console.log(binnedData);
   
   var t = d3.select('.timeline')
     .append('svg')
@@ -41,12 +40,30 @@ function buildTimeline() {
     .attr('class', 'bin')
     .attr('transform', function(d, i) { return 'translate(' + xScale(+d[0].date) + ', 0)' });
   
-  bins.selectAll('.dot')
+  bins.selectAll('.timeline--dot')
     .data(function(d) { return d })
     .enter().append('circle')
     .attr('class', 'timeline--dot')
     .attr('r', dotRadius)
     .attr('cx', binWidth/2)
     .attr('cy', function(d, i) { return (h - padding - dotRadius - 2) - i * (dotRadius*2 + 2); })
-    .style('fill', 'black');
+    .on('mouseover', function(d) { $(document).trigger('highlight:', +d.number) })
+    .on('mouseout', function(d) { $(document).trigger('dehighlight:', +d.number) })
+    .on('click', function(d) { $(document).trigger('select:', +d.number) });
+}
+
+function highlightDot(mapNumber) {
+  d3.selectAll('.timeline--dot')
+    .filter(function(d) {
+      return +d.number === mapNumber;
+    })
+    .classed('highlight', true);
+}
+
+function dehighlightDot(mapNumber) {
+  d3.selectAll('.timeline--dot')
+    .filter(function(d) {
+      return +d.number === mapNumber;
+    })
+    .classed('highlight', false);
 }
