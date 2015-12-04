@@ -2,10 +2,10 @@ function buildSearch() {
   $('.search--bar').on('keydown', function(e) {
     if(e.keyCode == 13) {
       var value = $(this).val();
-      $(document).trigger('filter:', value);
+      filters.push(value);
+      $(document).trigger('filter:');
       
       addSearchTerm(value);
-      console.log('adjust width');
       $(this)
         .width($(this).width() - $('.search--term').last().width() - 10)
         .val('');

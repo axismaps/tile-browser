@@ -3,6 +3,7 @@ var data = {
   filtered: {}
 };
 
+var filters = [];
 var selected = 0;
 
 $(document).ready(function() {
@@ -14,7 +15,7 @@ $(document).ready(function() {
 
 function initData() {
   $.get('data/maps.csv', function(m) {
-    data.maps = _.indexBy( Papa.parse( m, { header: true } ).data, "number" );
+    data.maps = Papa.parse( m, { header: true } ).data;
     data.filtered = data.maps;
     buildMap();
     buildMapList();
@@ -60,6 +61,19 @@ function initCustomEvents() {
   
   $(document).on('filter:', function() {
     $('.metadata').hide();
+    
+    console.log(data.filtered);
+    
+    //reset filter
+    data.filtered = _.filter(data.maps, function(map) {
+      return _.find(map, function(v, k) {
+        return _.find(filters, function(filter) {
+          return v.indexOf(filter) >= 0;
+        }) ? true : false;
+      }) ? true : false;
+    });
+    
+    console.log(data.filtered);
     
     filterMapList();
     filterMap();
