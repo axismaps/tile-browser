@@ -4,6 +4,8 @@ function buildTimeline() {
   var dotRadius = 5;
   var padding = 20;
   var binWidth = 1; //in years
+  
+  //binNum, binnedData, and dateDomain could be simplified, but I'm leaving it in case binWdith changes from a single year
   var binNum = w / binWidth;
   var binnedData = _.toArray(_.groupBy(data.maps, function(v, k) {
     var mod = +v.date % binWidth;
