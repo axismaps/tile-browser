@@ -1,6 +1,6 @@
 .map-list {
   box-sizing: border-box;
-  overflow-y: auto;
+  overflow-y: scroll;
   padding: 20px;
 }
 
