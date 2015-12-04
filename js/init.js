@@ -76,7 +76,7 @@ function initCustomEvents() {
     console.log(data.filtered);
     
     filterMapList();
-    filterMap();
+    buildMap();
     filterTimeline();
   });
 }

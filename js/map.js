@@ -1,4 +1,5 @@
 var atlas = {};
+var mapLayer;
 
 var rectStyle = {
   fill: false,
@@ -17,9 +18,15 @@ function initMap() {
   atlas = L.map('atlas').setView([40, -80], 4);
 
   L.tileLayer('//stamen-tiles-{s}.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}.png').addTo(atlas);
+  
+  mapLayer = L.featureGroup().addTo(atlas);
 }
 
 function buildMap() {
+  mapLayer.eachLayer(function(layer) {
+    mapLayer.removeLayer(layer);
+  });
+  
   _.each(data.filtered, function(map) {
     var options = {
       className: 'atlas--map-area',
@@ -46,7 +53,7 @@ function buildMap() {
           mouseout: function() { $(document).trigger('dehighlight:', f.properties.number) }
         });
       }
-    }).addTo(atlas);
+    }).addTo(mapLayer);
   });
 }
 
@@ -54,8 +61,4 @@ function selectMap(mapNumber) {
   var leafletLayer = findLeafletLayer(mapNumber);
   leafletLayer.setStyle(highlight);
   atlas.invalidateSize().fitBounds(leafletLayer.getBounds());
-}
-
-function filterMap() {
-  
 }
