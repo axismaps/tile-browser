@@ -1,5 +1,5 @@
 function showMetadata(map) {
-  if(!$('.metadata').is(':visible')) $('.metadata').animate({width:'toggle'}, 'slow');
+  if(!$('.metadata').is(':visible')) $('.metadata').animate({width:'toggle'}, 'fast');
   
   $('.metadata--title').text(map.title);
 }
