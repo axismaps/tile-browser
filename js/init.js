@@ -31,7 +31,7 @@ function initCustomEvents() {
   });
   
   $(document).on('dehighlight:', function(e, mapNumber) {
-    if(selected != mapNumber) {
+    if(selected != mapNumber && mapNumber !== 0) {
       var leafletLayer = findLeafletLayer(mapNumber);
       leafletLayer.setStyle(rectStyle);
       
