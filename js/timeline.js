@@ -5,10 +5,7 @@ function buildTimeline() {
     var year = +v.date;
     var mod = year % binWidth;
     return year - mod;
-  }));
-  console.log(binnedData);
-  // sortedData //This needs to be an array of arrays with the mapnumber somehow embedded in it
-  
+  }));  
   
   var t = d3.select('.timeline')
     .append('svg')
@@ -40,7 +37,7 @@ function buildTimeline() {
     .attr('transform', function(d, i) { return 'translate(' + xScale(+d[0].date) + ', 0)' });
   
   bins.selectAll('.dot')
-    .data(function(d) { console.log(d); return d })
+    .data(function(d) { return d })
     .enter().append('circle')
     .attr('class', 'timeline--dot')
     .attr('r', 5)
