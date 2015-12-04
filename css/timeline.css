@@ -18,3 +18,7 @@
 .timeline--dot.highlight {
   fill: #de2d26;
 }
+
+.timeline--dot.hidden {
+  display: none;
+}

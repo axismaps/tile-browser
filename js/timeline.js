@@ -72,9 +72,17 @@ function dehighlightDot(mapNumber) {
 
 function filterTimeline() {
   d3.selectAll('.timeline--dot')
-    .style('display', 'initial')
+    .classed({'hidden': false, 'shown': true})
     .filter(function(d) {
       return _.indexOf(_.pluck(data.filtered, 'number'), d.number) == -1 ? true : false;
     })
-    .style('display', 'none');
+    .classed({'hidden': true, 'shown': false});
+    
+  // console.log(d3.selectAll('.timeline--dot.shown')[0].length);
+  // d3.selectAll('.timeline--dot.shown')
+    // .attr('cy', function(d, i) {
+      // console.log(d);
+      // console.log(i);
+      // return 1;
+    // });
 }
