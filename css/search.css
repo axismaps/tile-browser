@@ -1,16 +1,25 @@
 .search {
+  align-items: center;
   box-sizing: border-box;
+  display: flex;
   margin: 0;
   padding: 20px;
+}
+
+.search--title {
+  font-size: 20px;
+  line-height: 35px;
+  margin-right: 10px;
 }
 
 .search--container {
   border: 1px solid #ccc;
   cursor: text;
+  display: inline-block;
   height: 35px;
   overflow: hidden;
   padding: 5px;
-  width: 600px;
+  width: 70%;
 }
 
 .search--bar {
@@ -19,7 +28,8 @@
   color: #333;
   float: right;
   font-size: 14px;
-  margin: 8px 0 0;
+  height: 30px;
+  margin: 3px 0 0;
   width: 100%;
 }
 
