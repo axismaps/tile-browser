@@ -59,7 +59,7 @@ function initCustomEvents() {
   });
   
   $(document).on('filter:', function() {
-    $('.metadata').animate({width:'toggle'}, 'fast');
+    $('.metadata').hide();
     
     filterMapList();
     filterMap();
