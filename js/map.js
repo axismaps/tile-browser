@@ -49,3 +49,9 @@ function buildMap() {
     }).addTo(atlas);
   });
 }
+
+function selectMap(mapNumber) {
+  var leafletLayer = findLeafletLayer(mapNumber);
+  leafletLayer.setStyle(highlight);
+  atlas.invalidateSize().fitBounds(leafletLayer.getBounds());
+}

@@ -49,12 +49,8 @@ function initCustomEvents() {
       
       showMetadata(data.maps[mapNumber]);
     
-      var leafletLayer = findLeafletLayer(mapNumber);
-      leafletLayer.setStyle(highlight);
-      atlas.fitBounds(leafletLayer.getBounds());
-      
+      selectMap(mapNumber);
       $('.map-list--link[data-number=' + mapNumber + ']').addClass('selected');
-      
       highlightDot(mapNumber);
     }
   });
