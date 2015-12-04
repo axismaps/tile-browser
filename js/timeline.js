@@ -69,3 +69,7 @@ function dehighlightDot(mapNumber) {
     })
     .classed('highlight', false);
 }
+
+function filterTimeline() {
+  
+}

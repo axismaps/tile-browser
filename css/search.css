@@ -1,4 +1,30 @@
-.search--title {
+.search {
+  box-sizing: border-box;
   margin: 0;
-  padding: 0;
+  padding: 20px;
+}
+
+.search--container {
+  border: 1px solid #ccc;
+  cursor: text;
+  height: 35px;
+  overflow: hidden;
+  padding: 5px;
+  width: 600px;
+}
+
+.search--bar {
+  background-color: #fff;
+  border: none;
+  color: #333;
+  float: right;
+  font-size: 14px;
+  margin: 8px 0 0;
+  width: 100%;
+}
+
+.search--term {
+  box-sizing: border-box;
+  line-height: 35px;
+  padding: 5px;
 }

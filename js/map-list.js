@@ -27,3 +27,7 @@ function buildMapList() {
     });
   });
 }
+
+function filterMapList() {
+  
+}

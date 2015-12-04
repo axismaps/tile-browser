@@ -19,6 +19,7 @@ function initData() {
     buildMap();
     buildMapList();
     buildTimeline();
+    buildSearch();
   });
 }
 
@@ -49,7 +50,7 @@ function initCustomEvents() {
       selected = mapNumber;
       $(document).trigger('dehighlight:', old);
       
-      showMetadata(data.filtered[mapNumber]);
+      buildMetadata(data.filtered[mapNumber]);
     
       selectMap(mapNumber);
       $('.map-list--link[data-number=' + mapNumber + ']').addClass('selected');
@@ -58,7 +59,11 @@ function initCustomEvents() {
   });
   
   $(document).on('filter:', function() {
+    $('.metadata').animate({width:'toggle'}, 'fast');
     
+    filterMapList();
+    filterMap();
+    filterTimeline();
   });
 }
 

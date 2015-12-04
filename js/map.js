@@ -55,3 +55,7 @@ function selectMap(mapNumber) {
   leafletLayer.setStyle(highlight);
   atlas.invalidateSize().fitBounds(leafletLayer.getBounds());
 }
+
+function filterMap() {
+  
+}
