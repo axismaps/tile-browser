@@ -29,5 +29,10 @@ function buildMapList() {
 }
 
 function filterMapList() {
-  
+  $('.map-list h3, .map-list--link').hide();
+  _.each(data.filtered, function(map) {
+    $('.map-list--link[data-number=' + map.number + ']')
+      .show()
+      .parent().prev().show(); //show year heading
+  });
 }
