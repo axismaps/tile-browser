@@ -51,6 +51,7 @@ function initCustomEvents() {
     
       var leafletLayer = findLeafletLayer(mapNumber);
       leafletLayer.setStyle(highlight);
+      atlas.fitBounds(leafletLayer.getBounds());
       
       $('.map-list--link[data-number=' + mapNumber + ']').addClass('selected');
       
