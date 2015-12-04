@@ -1,11 +1,12 @@
 function buildTimeline() {
-  console.log(data.maps);
-  
-  var tData = _.toArray(data.maps);
-  console.log(tData);
-  var binNum = 1200 / 12;
   var binWidth = 12;
-  
+  var binNum = 1200 / binWidth;
+  var binnedData = _.toArray(_.groupBy(data.maps, function(v, k) {
+    var year = +v.date;
+    var mod = year % binWidth;
+    return year - mod;
+  }));
+  console.log(binnedData);
   // sortedData //This needs to be an array of arrays with the mapnumber somehow embedded in it
   
   
@@ -33,17 +34,17 @@ function buildTimeline() {
     .call(xAxis);
     
   var bins = t.selectAll('g.bin')
-    .data(sortedData)
+    .data(binnedData)
     .enter().append('g')
     .attr('class', 'bin')
-    .attr('transform', function(d, i) { return 'translate(' + (i * binWidth) + ', 0)' });
+    .attr('transform', function(d, i) { return 'translate(' + xScale(+d[0].date) + ', 0)' });
   
-  t.selectAll('.dot')
-    .data(function(d) { return d })
+  bins.selectAll('.dot')
+    .data(function(d) { console.log(d); return d })
     .enter().append('circle')
     .attr('class', 'timeline--dot')
     .attr('r', 5)
     .attr('cx', binWidth/2)
-    .attr('cy', function(d, i) { return i; })
+    .attr('cy', function(d, i) { return i * 12; })
     .style('fill', 'black');
 }
