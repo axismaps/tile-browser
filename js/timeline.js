@@ -71,5 +71,10 @@ function dehighlightDot(mapNumber) {
 }
 
 function filterTimeline() {
-  
+  d3.selectAll('.timeline--dot')
+    .style('display', 'initial')
+    .filter(function(d) {
+      return _.indexOf(_.pluck(data.filtered, 'number'), d.number) == -1 ? true : false;
+    })
+    .style('display', 'none');
 }
