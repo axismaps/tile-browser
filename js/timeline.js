@@ -28,6 +28,7 @@ function buildTimeline() {
     
   d3.select('.timeline--svg').append('g')
     .attr('class', 'x-axis')
+    .attr('transform', 'translate(0, 100)')
     .call(xAxis);
     
   var bins = t.selectAll('g.bin')
@@ -42,6 +43,6 @@ function buildTimeline() {
     .attr('class', 'timeline--dot')
     .attr('r', 5)
     .attr('cx', binWidth/2)
-    .attr('cy', function(d, i) { return i * 12; })
+    .attr('cy', function(d, i) { return 100 - i * 12; })
     .style('fill', 'black');
 }
