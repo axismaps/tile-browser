@@ -1,34 +1,38 @@
 function buildTimeline() {
-  var binWidth = 12;
-  var binNum = 1200 / binWidth;
+  var w = $('.timeline').width();
+  var h = $('.timeline').height();
+  var dotRadius = 5;
+  var padding = 20;
+  var binWidth = 1; //in years
+  var binNum = w / binWidth;
   var binnedData = _.toArray(_.groupBy(data.maps, function(v, k) {
-    var year = +v.date;
-    var mod = year % binWidth;
-    return year - mod;
-  }));  
+    var mod = +v.date % binWidth;
+    return +v.date - mod;
+  }));
+  var dateDomain = [+binnedData[0][0].date - binWidth*2, +binnedData[binnedData.length-1][0].date + binWidth*2];
+  console.log(binnedData);
   
   var t = d3.select('.timeline')
     .append('svg')
-    .style('border', '1px solid')
-    .attr('width', '1200px')
-    .attr('height', '100px')
+    .attr('width', w)
+    .attr('height', h)
     .attr('class', 'timeline--svg')
     .append('g');
     
-  var yScale = d3.scale.linear().domain([100, 0]).range([0,20]);
+  var yScale = d3.scale.linear().domain([h, 0]).range([0,20]);
   var yAxis = d3.svg.axis().scale(yScale).orient('left');
   
-  var xScale = d3.scale.linear().range([0,1200]).domain([1600,1900]);
+  var xScale = d3.scale.linear().domain(dateDomain).range([padding, w - padding*2]);
   var xAxis = d3.svg.axis()
     .scale(xScale)
     .orient('bottom')
-    .ticks(binNum/10)
+    .ticks(20)
     .tickSize(5)
     .tickFormat(d3.format(".0f"));
     
   d3.select('.timeline--svg').append('g')
     .attr('class', 'x-axis')
-    .attr('transform', 'translate(0, 100)')
+    .attr('transform', 'translate(0, ' + (h - padding) + ')')
     .call(xAxis);
     
   var bins = t.selectAll('g.bin')
@@ -41,8 +45,8 @@ function buildTimeline() {
     .data(function(d) { return d })
     .enter().append('circle')
     .attr('class', 'timeline--dot')
-    .attr('r', 5)
+    .attr('r', dotRadius)
     .attr('cx', binWidth/2)
-    .attr('cy', function(d, i) { return 100 - i * 12; })
+    .attr('cy', function(d, i) { return (h - padding - dotRadius - 2) - i * (dotRadius*2 + 2); })
     .style('fill', 'black');
 }

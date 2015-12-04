@@ -1,4 +1,11 @@
-.timeline--title {
+.timeline {
+  box-sizing: border-box;
   margin: 0;
-  padding: 0;
+  padding: 20px;
+}
+
+.x-axis path {
+  fill: none;
+  stroke: #000;
+  stroke-width: 2;
 }
