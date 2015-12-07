@@ -1,9 +1,10 @@
+var binWidth = 1; //in years
+var dotRadius = 5;
+var padding = 20;
+
 function buildTimeline() {
   var w = $('.timeline').width();
   var h = $('.timeline').height();
-  var dotRadius = 5;
-  var padding = 20;
-  var binWidth = 1; //in years
   
   //binNum, binnedData, and dateDomain could be simplified, but I'm leaving it in case binWdith changes from a single year
   var binNum = w / binWidth;
@@ -71,18 +72,22 @@ function dehighlightDot(mapNumber) {
 }
 
 function filterTimeline() {
-  d3.selectAll('.timeline--dot')
-    .classed({'hidden': false, 'shown': true})
-    .filter(function(d) {
-      return _.indexOf(_.pluck(data.filtered, 'number'), d.number) == -1 ? true : false;
-    })
-    .classed({'hidden': true, 'shown': false});
-    
-  // console.log(d3.selectAll('.timeline--dot.shown')[0].length);
-  // d3.selectAll('.timeline--dot.shown')
-    // .attr('cy', function(d, i) {
-      // console.log(d);
-      // console.log(i);
-      // return 1;
-    // });
+  var w = $('.timeline').width();
+  var h = $('.timeline').height();
+  var binNum = w / binWidth;
+  var binnedData = _.toArray(_.groupBy(data.filtered, function(v, k) {
+    var mod = +v.date % binWidth;
+    return +v.date - mod;
+  }));
+  var dateDomain = [+binnedData[0][0].date - binWidth*2, +binnedData[binnedData.length-1][0].date + binWidth*2];
+  
+  d3.selectAll('g.bin').each(function(d) {
+    d3.select(this).selectAll('.timeline--dot')
+      .classed({'hidden': true, 'shown': false})
+      .filter(function(d) {
+        return _.indexOf(_.pluck(data.filtered, 'number'), d.number) == -1 ? false : true;
+      })
+      .classed({'hidden': false, 'shown': true})
+      .attr('cy', function(d, i) { return (h - padding - dotRadius - 2) - i * (dotRadius*2 + 2); });
+  });
 }
