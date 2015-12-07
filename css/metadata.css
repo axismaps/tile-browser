@@ -1,4 +1,12 @@
 .metadata {
   background-color: #ccc;
+  overflow-y: scroll;
   padding: 20px;
+}
+
+.metadata ul {
+}
+
+.metadata--itemTitle {
+  font-weight: 700;
 }
