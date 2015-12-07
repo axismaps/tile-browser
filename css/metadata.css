@@ -4,6 +4,10 @@
   padding: 20px;
 }
 
+.metadata--header {
+  font-size: 20px;
+}
+
 .metadata ul {
 }
 
