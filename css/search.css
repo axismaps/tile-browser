@@ -36,7 +36,21 @@
 .search--term {
   background-color: #ccc;
   box-sizing: border-box;
+  display: inline;
   line-height: 35px;
   margin-right: 5px;
   padding: 5px;
+}
+
+.search--textTerm {
+
+}
+  
+.search--closeTerm {
+  color: #666;
+  cursor: pointer;
+}
+
+.search--closeTerm:hover {
+  color: #333;
 }
