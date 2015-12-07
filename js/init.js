@@ -18,7 +18,7 @@ function initData() {
     data.maps = _.indexBy( Papa.parse( m, { header: true } ).data, "number" );
     console.log(data.maps);
     data.filtered = data.maps;
-    buildMap();
+    drawMap();
     buildMapList();
     buildTimeline();
     buildSearch();
@@ -77,7 +77,7 @@ function initCustomEvents() {
     console.log(data.filtered);
     
     filterMapList();
-    buildMap();
+    drawMap();
     filterTimeline();
   });
 }
