@@ -74,12 +74,6 @@ function dehighlightDot(mapNumber) {
 function filterTimeline() {
   var w = $('.timeline').width();
   var h = $('.timeline').height();
-  var binNum = w / binWidth;
-  var binnedData = _.toArray(_.groupBy(data.filtered, function(v, k) {
-    var mod = +v.date % binWidth;
-    return +v.date - mod;
-  }));
-  var dateDomain = [+binnedData[0][0].date - binWidth*2, +binnedData[binnedData.length-1][0].date + binWidth*2];
   
   d3.selectAll('g.bin').each(function(d) {
     d3.select(this).selectAll('.timeline--dot')
