@@ -19,7 +19,7 @@ function initData() {
     console.log(data.maps);
     data.filtered = data.maps;
     drawMap();
-    buildMapList();
+    drawMapList();
     buildTimeline();
     buildSearch();
   });
@@ -76,7 +76,7 @@ function initCustomEvents() {
     
     console.log(data.filtered);
     
-    filterMapList();
+    drawMapList();
     drawMap();
     filterTimeline();
   });
