@@ -68,7 +68,7 @@ function initCustomEvents() {
       data.filtered = _.pick(data.maps, function(map) {
         return _.find(map, function(v) {
           return _.every(filters, function(filter) {
-            return v.indexOf(filter) >= 0;
+            return v.toLowerCase().indexOf(filter.toLowerCase()) >= 0;
           });
         }) ? true : false;
       });
