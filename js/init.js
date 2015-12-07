@@ -15,7 +15,8 @@ $(document).ready(function() {
 
 function initData() {
   $.get('data/maps.csv', function(m) {
-    data.maps = Papa.parse( m, { header: true } ).data;
+    data.maps = _.indexBy( Papa.parse( m, { header: true } ).data, "number" );
+    console.log(data.maps);
     data.filtered = data.maps;
     buildMap();
     buildMapList();
@@ -65,7 +66,7 @@ function initCustomEvents() {
     console.log(data.filtered);
     
     //reset filter
-    data.filtered = _.filter(data.maps, function(map) {
+    data.filtered = _.pick(data.maps, function(map) {
       return _.find(map, function(v, k) {
         return _.find(filters, function(filter) {
           return v.indexOf(filter) >= 0;
