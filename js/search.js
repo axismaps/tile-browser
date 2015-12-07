@@ -6,18 +6,44 @@ function buildSearch() {
       $(document).trigger('filter:');
       
       addSearchTerm(value);
-      $(this)
-        .width($(this).width() - $('.search--term').last().width() - 15)
-        .val('');
+      recalcWidth();
     }
   });
 }
 
 function addSearchTerm(v) {
-  var span = $('<span>')
+  var termSpan = $('<span>')
+    .addClass('search--textTerm')
+    .text(v);
+    
+  var closeSpan = $('<span>')
+    .addClass('search--closeTerm')
+    .html('<i class="icon-cancel-circled"></i>')
+    .on('click', function() {
+      filters = _.without(filters, $(this).prev().text());
+      $(this).parent().remove();
+      recalcWidth();
+      $(document).trigger('filter:');
+    });
+    
+  var term = $('<div>')
     .addClass('search--term')
-    .text(v)
+    .append(termSpan)
+    .append(closeSpan);
   
-  if($('.search--term').length > 0) $('.search--term').last().after(span);
-  else $('.search--container').prepend(span);
+  if($('.search--term').length > 0) $('.search--term').last().after(term);
+  else $('.search--container').prepend(term);
+}
+
+function recalcWidth() {
+  $('.search--bar').css('width', '100%');
+  
+  var termWidth = 0;
+  $('.search--term').each(function() {
+    termWidth += $(this).width() + 15;
+  });
+  
+   $('.search--bar')
+      .width($('.search--bar').width() - termWidth)
+      .val('');
 }

@@ -66,13 +66,15 @@ function initCustomEvents() {
     console.log(data.filtered);
     
     //reset filter
-    data.filtered = _.pick(data.maps, function(map) {
-      return _.find(map, function(v, k) {
-        return _.find(filters, function(filter) {
-          return v.indexOf(filter) >= 0;
+    if(filters.length > 0) {
+      data.filtered = _.pick(data.maps, function(map) {
+        return _.find(map, function(v, k) {
+          return _.find(filters, function(filter) {
+            return v.indexOf(filter) >= 0;
+          }) ? true : false;
         }) ? true : false;
-      }) ? true : false;
-    });
+      });
+    } else data.filtered = data.maps;
     
     console.log(data.filtered);
     
