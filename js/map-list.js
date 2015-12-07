@@ -1,7 +1,9 @@
-function buildMapList() {
+function drawMapList() {
   var dateSorted = _.groupBy(data.filtered, function(v, k) {
     return +v.date;
   });
+  
+  $('.map-list h3, .map-list--link').remove();
   
   _.each(dateSorted, function(group) {
     $('<h3>').text(group[0].date).appendTo($('.map-list--list'));
@@ -25,14 +27,5 @@ function buildMapList() {
           $(document).trigger('dehighlight:', +v.number);
         });
     });
-  });
-}
-
-function filterMapList() {
-  $('.map-list h3, .map-list--link').hide();
-  _.each(data.filtered, function(map) {
-    $('.map-list--link[data-number=' + map.number + ']')
-      .show()
-      .parent().prev().show(); //show year heading
   });
 }

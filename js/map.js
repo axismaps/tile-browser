@@ -22,7 +22,7 @@ function initMap() {
   mapLayer = L.featureGroup().addTo(atlas);
 }
 
-function buildMap() {
+function drawMap() {
   mapLayer.eachLayer(function(layer) {
     mapLayer.removeLayer(layer);
   });
