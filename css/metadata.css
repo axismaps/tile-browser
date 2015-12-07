@@ -4,6 +4,11 @@
   padding: 20px;
 }
 
+#metadata--map {
+  height: 250px;
+  width: 100%;
+}
+
 .metadata--header {
   font-size: 20px;
 }
