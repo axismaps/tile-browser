@@ -70,9 +70,16 @@ function selectMap(mapNumber) {
   
   if(histLayer) atlas.removeLayer(histLayer);
   
+  var histBounds = [
+    [data.maps[mapNumber].bottom, data.maps[mapNumber].left],
+    [data.maps[mapNumber].top, data.maps[mapNumber].right]
+  ];
+  
   histLayer = L.tileLayer( histTileURL + "tiles/" + mapNumber + "/{z}/{x}/{y}.png", {
 		tms : true,
-		maxZoom : data.maps[mapNumber].MaxZoom,
-		maxNativeZoom : data.maps[mapNumber].MaxZoom
+    bounds: histBounds,
+    minZoom: data.maps[mapNumber].minZoom,
+		maxZoom: data.maps[mapNumber].maxZoom,
+		maxNativeZoom: data.maps[mapNumber].maxZoom
 	} ).addTo(atlas);
 }
