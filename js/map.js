@@ -8,7 +8,7 @@ var histTileURL = 'http://bpl-maps2.s3-website-us-east-1.amazonaws.com/';
 var rectStyle = {
   fill: false,
   color: '#a6bddb',
-  weight: 1,
+  weight: 3,
   opacity: 0.5
 };
 
@@ -21,7 +21,9 @@ var highlight = {
 function initMap() {
   atlas = L.map('atlas').setView([40, -80], 4);
 
-  L.tileLayer('//stamen-tiles-{s}.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}.png').addTo(atlas);
+  L.tileLayer('//stamen-tiles-{s}.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}.png', {
+    attribution: 'Basemap tiles by Stamen Design, under CC BY 3.0. Data by OpenStreetMap, under ODbL'
+  }).addTo(atlas);
   
   mapLayer = L.featureGroup().addTo(atlas);
 }
@@ -62,15 +64,18 @@ function drawMap() {
 }
 
 function selectMap(mapNumber) {
-  var leafletLayer = findLeafletLayer(mapNumber);
-  leafletLayer.setStyle(highlight);
-  atlas.invalidateSize().fitBounds(leafletLayer.getBounds());
+  var histBounds = [
+    [data.maps[mapNumber].bottom, data.maps[mapNumber].left],
+    [data.maps[mapNumber].top, data.maps[mapNumber].right]
+  ];
   
-  if(histLayer) atlas.removeLayer(histLayer);
+  atlas.invalidateSize().fitBounds(histBounds);
   
   histLayer = L.tileLayer( histTileURL + "tiles/" + mapNumber + "/{z}/{x}/{y}.png", {
 		tms : true,
-		maxZoom : data.maps[mapNumber].MaxZoom,
-		maxNativeZoom : data.maps[mapNumber].MaxZoom
-	} ).addTo(atlas);
+    bounds: histBounds,
+    minZoom: data.maps[mapNumber].minZoom,
+		maxZoom: data.maps[mapNumber].maxZoom,
+		maxNativeZoom: data.maps[mapNumber].maxZoom
+  }).addTo(atlas);
 }

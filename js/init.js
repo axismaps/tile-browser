@@ -28,7 +28,7 @@ function initData() {
 function initCustomEvents() {
   $(document).on('highlight:', function(e, mapNumber) {
     var leafletLayer = findLeafletLayer(mapNumber);
-    leafletLayer.setStyle(highlight);
+    if(leafletLayer) leafletLayer.setStyle(highlight);
     
     $('.map-list--link[data-number=' + mapNumber + ']').addClass('selected');
     
@@ -38,7 +38,7 @@ function initCustomEvents() {
   $(document).on('dehighlight:', function(e, mapNumber) {
     if(selected !== mapNumber && mapNumber !== 0) {
       var leafletLayer = findLeafletLayer(mapNumber);
-      leafletLayer.setStyle(rectStyle);
+      if(leafletLayer) leafletLayer.setStyle(rectStyle);
       
       $('.map-list--link[data-number=' + mapNumber + ']').removeClass('selected');
       
@@ -48,33 +48,36 @@ function initCustomEvents() {
 
   $(document).on('select:', function(e, mapNumber) {
     if(selected !== mapNumber) {
-      var old = selected;
-      selected = mapNumber;
-      $(document).trigger('dehighlight:', old);
-      
+      $(document).trigger('deselect:');
+          
       buildMetadata(data.filtered[mapNumber]);
     
+      atlas.removeLayer(mapLayer);
       selectMap(mapNumber);
+      
       $('.map-list--link[data-number=' + mapNumber + ']').addClass('selected');
       highlightDot(mapNumber);
+      
+      selected = mapNumber;
     }
   });
   
   $(document).on('deselect:', function(e) {
-    var leafletLayer = findLeafletLayer(selected);
-    leafletLayer.setStyle(rectStyle);
-    
-    $('.metadata').hide();
-    $('.map-list--link.selected').removeClass('selected');
-    dehighlightDot(selected);
-    
-    atlas.removeLayer(histLayer);
-    
-    selected = 0;
+    if(selected !== 0) {
+      $('.metadata').hide();
+      $('.map-list--link.selected').removeClass('selected');
+      dehighlightDot(selected);
+      
+      atlas.addLayer(mapLayer).removeLayer(histLayer).invalidateSize();
+      var leafletLayer = findLeafletLayer(selected);
+      if(leafletLayer) leafletLayer.setStyle(rectStyle);
+      
+      selected = 0;
+    }
   });
   
   $(document).on('filter:', function() {
-    $('.metadata').hide();
+    $(document).trigger('deselect:');
     
     //reset filter
     if(filters.length > 0) {
