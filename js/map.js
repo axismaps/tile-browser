@@ -8,7 +8,7 @@ var histTileURL = 'http://bpl-maps2.s3-website-us-east-1.amazonaws.com/';
 var rectStyle = {
   fill: false,
   color: '#a6bddb',
-  weight: 1,
+  weight: 3,
   opacity: 0.5
 };
 
