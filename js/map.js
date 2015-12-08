@@ -21,7 +21,9 @@ var highlight = {
 function initMap() {
   atlas = L.map('atlas').setView([40, -80], 4);
 
-  L.tileLayer('//stamen-tiles-{s}.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}.png').addTo(atlas);
+  L.tileLayer('//stamen-tiles-{s}.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}.png', {
+    attribution: 'Basemap tiles by Stamen Design, under CC BY 3.0. Data by OpenStreetMap, under ODbL'
+  }).addTo(atlas);
   
   mapLayer = L.featureGroup().addTo(atlas);
 }
