@@ -64,16 +64,12 @@ function drawMap() {
 }
 
 function selectMap(mapNumber) {
-  var leafletLayer = findLeafletLayer(mapNumber);
-  leafletLayer.setStyle(highlight);
-  atlas.invalidateSize().fitBounds(leafletLayer.getBounds());
-  
-  if(histLayer) atlas.removeLayer(histLayer);
-  
   var histBounds = [
     [data.maps[mapNumber].bottom, data.maps[mapNumber].left],
     [data.maps[mapNumber].top, data.maps[mapNumber].right]
   ];
+  
+  atlas.invalidateSize().fitBounds(histBounds);
   
   histLayer = L.tileLayer( histTileURL + "tiles/" + mapNumber + "/{z}/{x}/{y}.png", {
 		tms : true,
@@ -81,5 +77,5 @@ function selectMap(mapNumber) {
     minZoom: data.maps[mapNumber].minZoom,
 		maxZoom: data.maps[mapNumber].maxZoom,
 		maxNativeZoom: data.maps[mapNumber].maxZoom
-	} ).addTo(atlas);
+  }).addTo(atlas);
 }
