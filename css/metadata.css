@@ -4,6 +4,19 @@
   padding: 20px;
 }
 
+.metadata--close {
+  background-color: initial;
+  border: none;
+  color: #666;
+  cursor: pointer;
+  float: right;
+  font-size: 20px;
+}
+
+.metadata--close:hover {
+  color: #333;
+}
+
 #metadata--map {
   height: 250px;
   width: 100%;

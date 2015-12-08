@@ -60,6 +60,19 @@ function initCustomEvents() {
     }
   });
   
+  $(document).on('deselect:', function(e) {
+    var leafletLayer = findLeafletLayer(selected);
+    leafletLayer.setStyle(rectStyle);
+    
+    $('.metadata').hide();
+    $('.map-list--link.selected').removeClass('selected');
+    dehighlightDot(selected);
+    
+    atlas.removeLayer(histLayer);
+    
+    selected = 0;
+  });
+  
   $(document).on('filter:', function() {
     $('.metadata').hide();
     

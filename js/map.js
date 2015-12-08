@@ -1,5 +1,9 @@
 var atlas = {};
 var mapLayer;
+var histLayer;
+// var histTileURL = '';
+var histTileURL = 'http://bpl-maps2.s3-website-us-east-1.amazonaws.com/';
+// var histTileURL = 'http://www.zoominginonhistory.com/tiles/';
 
 var rectStyle = {
   fill: false,
@@ -61,4 +65,12 @@ function selectMap(mapNumber) {
   var leafletLayer = findLeafletLayer(mapNumber);
   leafletLayer.setStyle(highlight);
   atlas.invalidateSize().fitBounds(leafletLayer.getBounds());
+  
+  if(histLayer) atlas.removeLayer(histLayer);
+  
+  histLayer = L.tileLayer( histTileURL + "tiles/" + mapNumber + "/{z}/{x}/{y}.png", {
+		tms : true,
+		maxZoom : data.maps[mapNumber].MaxZoom,
+		maxNativeZoom : data.maps[mapNumber].MaxZoom
+	} ).addTo(atlas);
 }
