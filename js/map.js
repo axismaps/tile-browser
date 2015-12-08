@@ -1,7 +1,8 @@
 var atlas = {};
 var mapLayer;
 var histLayer;
-var histTileURL = '';
+// var histTileURL = '';
+var histTileURL = 'http://bpl-maps2.s3-website-us-east-1.amazonaws.com/';
 // var histTileURL = 'http://www.zoominginonhistory.com/tiles/';
 
 var rectStyle = {
