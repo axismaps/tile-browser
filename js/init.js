@@ -68,13 +68,13 @@ function initCustomEvents() {
     $('.map-list--link.selected').removeClass('selected');
     dehighlightDot(selected);
     
-    atlas.removeLayer(histLayer);
+    atlas.removeLayer(histLayer).invalidateSize();
     
     selected = 0;
   });
   
   $(document).on('filter:', function() {
-    $('.metadata').hide();
+    $(document).trigger('deselect:');
     
     //reset filter
     if(filters.length > 0) {
