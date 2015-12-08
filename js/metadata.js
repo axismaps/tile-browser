@@ -3,14 +3,15 @@ var mdmap;
 function buildMetadata(map) {
   if(!$('.metadata').is(':visible')) $('.metadata').show();
   
-  $('.metadata--header').text(map.title);
+  $('.metadata--close').off().on('click', function() { $(document).trigger('deselect:'); });
   
+  $('.metadata--header').text(map.title);
   
   _.each(map, function(v, k) {
     if($('.metadata--' + k).length > 0) $('.metadata--' + k + ' .metadata--item').empty().text(map[k]);
   });
   
-  
+  /* Metadata inset map */
   if(!mdmap) {
     mdmap = L.map('metadata--map', {
       dragging: false,
