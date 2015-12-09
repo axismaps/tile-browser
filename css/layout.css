@@ -48,6 +48,10 @@ body {
   padding: 10px 10px 0 0;
 }
 
+.logo img {
+  height: 40px;
+}
+
 .search {
   height: 30%;
 }
