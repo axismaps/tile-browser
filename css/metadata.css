@@ -1,5 +1,7 @@
 .metadata {
-  background-color: #ccc;
+  border: 2px solid #4d433f;
+  box-sizing: border-box;
+  margin: 2px;
   overflow-y: scroll;
   padding: 20px;
 }
@@ -9,26 +11,44 @@
   border: none;
   color: #666;
   cursor: pointer;
-  float: right;
   font-size: 20px;
+  font-style: italic;
+  margin-bottom: 10px;
+  padding: 0;
 }
 
 .metadata--close:hover {
   color: #333;
 }
 
+.metadata--map-border {
+  border: 2px solid #4d433f;
+  padding: 2px;
+  width: 100%;
+}
+
 #metadata--map {
+  border: 6px solid #4d433f;
+  box-sizing: border-box;
   height: 250px;
   width: 100%;
 }
 
 .metadata--header {
+  font-family: 'IM Fell French Canon SC', serif;
   font-size: 20px;
+  font-weight: 400;
 }
 
-.metadata ul {
+.metadata li {
+  list-style: none;
+  text-indent: -5%;
 }
 
 .metadata--itemTitle {
   font-weight: 700;
+}
+
+.metadata--tech {
+  font-family: 'Inconsolata', monospace;
 }

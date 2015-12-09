@@ -1,0 +1,19 @@
+.atlas--border {
+  border: 6px solid #4d433f;
+  border-right: none;
+  border-top: none;
+  box-sizing: border-box;
+  padding: 0 4px 2px 2px;
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+.atlas--border-right {
+    border-right: 6px solid #4d433f;
+}
+
+.atlas {
+  border: 2px solid #4d433f;
+  border-top: none;
+}

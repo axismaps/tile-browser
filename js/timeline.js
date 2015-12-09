@@ -1,6 +1,9 @@
 var binWidth = 1; //in years
-var dotRadius = 5;
-var padding = 20;
+var rectHeight = 6;
+var rectWidth = 14;
+var padding = 5;
+var paddingLeft = 10;
+var paddingBottom = 25;
 
 function buildTimeline() {
   var w = $('.timeline').width();
@@ -34,8 +37,17 @@ function buildTimeline() {
     
   d3.select('.timeline--svg').append('g')
     .attr('class', 'x-axis')
-    .attr('transform', 'translate(0, ' + (h - padding) + ')')
+    .attr('transform', 'translate(' + paddingLeft + ', ' + (h - paddingBottom) + ')')
     .call(xAxis);
+    
+  d3.select('.x-axis path').style({
+    'stroke-dasharray': function() { return '120, 120' }
+  });
+    
+  d3.select('.timeline--svg').append('rect')
+    .attr('class', 'x-axis-border')
+    .attr('width', w - padding * 2)
+    .attr('transform', 'translate(' + paddingLeft + ', ' + (h - paddingBottom - rectHeight) + ')');
     
   var bins = t.selectAll('g.bin')
     .data(binnedData)
@@ -45,11 +57,12 @@ function buildTimeline() {
   
   bins.selectAll('.timeline--dot')
     .data(function(d) { return d })
-    .enter().append('circle')
+    .enter().append('rect')
     .attr('class', 'timeline--dot')
-    .attr('r', dotRadius)
-    .attr('cx', binWidth/2)
-    .attr('cy', function(d, i) { return (h - padding - dotRadius - 2) - i * (dotRadius*2 + 2); })
+    .attr('width', rectWidth)
+    .attr('height', rectHeight)
+    .attr('x', binWidth/2)
+    .attr('y', function(d, i) { return (h - paddingBottom - rectHeight - 8) - i * (rectHeight + 2); })
     .on('mouseover', function(d) { $(document).trigger('highlight:', +d.number) })
     .on('mouseout', function(d) { $(document).trigger('dehighlight:', +d.number) })
     .on('click', function(d) { $(document).trigger('select:', +d.number) });
@@ -82,6 +95,6 @@ function filterTimeline() {
         return _.indexOf(_.pluck(data.filtered, 'number'), d.number) == -1 ? false : true;
       })
       .classed({'hidden': false, 'shown': true})
-      .attr('cy', function(d, i) { return (h - padding - dotRadius - 2) - i * (dotRadius*2 + 2); });
+      .attr('y', function(d, i) { return (h - paddingBottom - rectHeight - 8) - i * (rectHeight + 2); });
   });
 }

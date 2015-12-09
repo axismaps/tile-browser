@@ -4,19 +4,33 @@
   padding: 20px;
 }
 
+.x-axis {
+  fill: #4d433f;
+  font-family: 'IM Fell French Canon SC', serif;
+  font-weight: bold;
+}
+
 .x-axis path {
   fill: none;
-  stroke: #000;
+  stroke: #4d433f;
+  stroke-width: 10;
+}
+
+.x-axis-border {
+  fill: none;
+  height: 10px;
+  stroke: #4d433f;
   stroke-width: 2;
+  width: 10;
 }
 
 .timeline--dot {
   cursor: pointer;
-  fill: #000;
+  fill: #4d433f;
 }
 
 .timeline--dot.highlight {
-  fill: #de2d26;
+  fill: #82332E;
 }
 
 .timeline--dot.hidden {

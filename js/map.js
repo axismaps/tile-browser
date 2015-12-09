@@ -7,13 +7,13 @@ var histTileURL = 'http://bpl-maps2.s3-website-us-east-1.amazonaws.com/';
 
 var rectStyle = {
   fill: false,
-  color: '#a6bddb',
+  color: '#4d433f',
   weight: 3,
   opacity: 0.5
 };
 
 var highlight = {
-  color: '#de2d26',
+  color: '#82332E',
   weight: 5,
   opacity: 0.8
 };
@@ -69,7 +69,7 @@ function selectMap(mapNumber) {
     [data.maps[mapNumber].top, data.maps[mapNumber].right]
   ];
   
-  atlas.invalidateSize().fitBounds(histBounds);
+  atlas.fitBounds(histBounds);
   
   histLayer = L.tileLayer( histTileURL + "tiles/" + mapNumber + "/{z}/{x}/{y}.png", {
 		tms : true,

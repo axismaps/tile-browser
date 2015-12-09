@@ -1,7 +1,10 @@
 var mdmap;
 
 function buildMetadata(map) {
-  if(!$('.metadata').is(':visible')) $('.metadata').show();
+  if(!$('.metadata').is(':visible')) {
+    $('.metadata').show();
+    $('.atlas--border').addClass('atlas--border-right');
+  }
   
   $('.metadata--close').off().on('click', function() { $(document).trigger('deselect:'); });
   

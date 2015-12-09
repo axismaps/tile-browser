@@ -1,32 +1,57 @@
 .map-list {
+  border: 2px solid #4d433f;
   box-sizing: border-box;
+  margin: 2px;
   overflow-y: scroll;
   padding: 20px;
+}
+
+.map-list--title {
+  color: #4d433f;
+  font-family: 'IM Fell French Canon SC', serif;
+  margin: 0;
 }
 
 .map-list--list {
   list-style: none;
   padding: 10px;
+  padding-top: 0;
 }
 
 .map-list--list h3 {
-  font-size: 16px;
+  color: #4d433f;
+  font-family: 'IM Fell French Canon SC', serif;
+  font-size: 18px;
   margin: 5px 0;
 }
 
 .map-list--list li {
-  padding-left: 20px;
+  align-content: flex-start;
+  display: flex;
+  padding-bottom: 5px;
+  padding-left: 10px;
+}
+
+.map-list--fleur {
+  background-image: url("../img/fleur-symbol.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  display: inline-block;
+  visibility: hidden;
+  width: 20px;
 }
 
 .map-list--link {
   color: black;
+  padding-left: 15px;
   text-decoration: none;
+  text-indent: -10px;
+  width: 80%;
 }
 
 .map-list--link:hover {
-  text-decoration: underline;
 }
 
-.map-list--link.selected {
-  background-color: #de2d26;
+.map-list--link.selected.a {
+  background-color: #500F14;
 }
