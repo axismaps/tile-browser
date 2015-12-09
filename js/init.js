@@ -30,7 +30,7 @@ function initCustomEvents() {
     var leafletLayer = findLeafletLayer(mapNumber);
     if(leafletLayer) leafletLayer.setStyle(highlight);
     
-    $('.map-list--link[data-number=' + mapNumber + ']').addClass('selected');
+    $('.map-list--link[data-number=' + mapNumber + ']').addClass('selected').prev().css('visibility', 'visible');
     
     highlightDot(mapNumber);
   });
@@ -40,7 +40,7 @@ function initCustomEvents() {
       var leafletLayer = findLeafletLayer(mapNumber);
       if(leafletLayer) leafletLayer.setStyle(rectStyle);
       
-      $('.map-list--link[data-number=' + mapNumber + ']').removeClass('selected');
+      $('.map-list--link[data-number=' + mapNumber + ']').removeClass('selected').prev().css('visibility', 'hidden');
       
       dehighlightDot(mapNumber);
     }
@@ -55,7 +55,12 @@ function initCustomEvents() {
       atlas.removeLayer(mapLayer);
       selectMap(mapNumber);
       
-      $('.map-list--link[data-number=' + mapNumber + ']').addClass('selected');
+      $('.map-list--link[data-number=' + mapNumber + ']')
+        .addClass('selected')
+        .prev().css({
+          'visibility': 'visible',
+          'background-image': 'url("img/fleur-symbol-selected.png")'
+        });
       highlightDot(mapNumber);
       
       selected = mapNumber;
@@ -65,10 +70,16 @@ function initCustomEvents() {
   $(document).on('deselect:', function(e) {
     if(selected !== 0) {
       $('.metadata').hide();
-      $('.map-list--link.selected').removeClass('selected');
+      $('.atlas--border').removeClass('atlas--border-right');
+      $('.map-list--link.selected')
+      .removeClass('selected')
+      .prev().css({
+          'visibility': 'hidden',
+          'background-image': 'url("img/fleur-symbol.png")'
+        });
       dehighlightDot(selected);
       
-      atlas.addLayer(mapLayer).removeLayer(histLayer).invalidateSize();
+      atlas.addLayer(mapLayer).removeLayer(histLayer);
       var leafletLayer = findLeafletLayer(selected);
       if(leafletLayer) leafletLayer.setStyle(rectStyle);
       

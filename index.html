@@ -5,6 +5,8 @@
     <meta charset="utf-8"/>
     <meta name="viewport" content="initial-scale=1.0"/>
     
+    <link href='https://fonts.googleapis.com/css?family=IM+Fell+French+Canon+SC|IM+Fell+French+Canon:400,400italic|Inconsolata' rel='stylesheet' type='text/css'>
+    
     <!-- build:css css/{{site}}.css -->
     <link rel="stylesheet" href="bower_components/normalize.css/normalize.css" />
     <link rel="stylesheet" href="bower_components/leaflet/dist/leaflet.css" />
@@ -23,17 +25,20 @@
   </head>
   
   <body>
+    <div class="main-border">
     <div class="main-container">
       <div class="map-list">
-        <h1>Map List</h1>
+        <h1 class="map-list--title">Map List</h1>
         <ul class="map-list--list"></ul>
       </div>
-      <div class="atlas" id="atlas">
+      <div class="atlas--border">
+        <div class="atlas" id="atlas"></div>
       </div>
       <div class="metadata u-hidden">
-        <button class="metadata--close"><i class="icon-cancel-circled"></i></button>
-        <div id="metadata--map"></div>
+        <button class="metadata--close"><i class="icon-cancel-circled"></i> Return to Browser</button>
+        <div class="metadata--map-border"><div id="metadata--map"></div></div>
         <h1 class="metadata--header"></h1>
+        <div class="divider"></div>
         <h3>Metadata</h3>
         <ul>
           <li class="metadata--title"><span class="metadata--itemTitle">Title: </span><span class="metadata--item"></span></li>
@@ -41,20 +46,23 @@
           <li class="metadata--date"><span class="metadata--itemTitle">Date: </span><span class="metadata--item"></span></li>
           <li class="metadata--caption"><span class="metadata--itemTitle">Caption: </span><span class="metadata--item"></span></li>
         </ul>
+        <div class="divider"></div>
         <h3>Technical Details</h3>
         <ul>
-          <li class="metadata--left"><span class="metadata--itemTitle">Left Long: </span><span class="metadata--item"></span></li>
-          <li class="metadata--right"><span class="metadata--itemTitle">Right Long: </span><span class="metadata--item"></span></li>
-          <li class="metadata--bottom"><span class="metadata--itemTitle">Bottom Lat: </span><span class="metadata--item"></span></li>
-          <li class="metadata--top"><span class="metadata--itemTitle">Top Lat: </span><span class="metadata--item"></span></li>
-          <li class="metadata--minZoom"><span class="metadata--itemTitle">Min Zoom: </span><span class="metadata--item"></span></li>
-          <li class="metadata--maxZoom"><span class="metadata--itemTitle">Max Zoom: </span><span class="metadata--item"></span></li>
+          <li class="metadata--left"><span class="metadata--itemTitle">Left Long: </span><span class="metadata--item metadata--tech"></span></li>
+          <li class="metadata--right"><span class="metadata--itemTitle">Right Long: </span><span class="metadata--item metadata--tech"></span></li>
+          <li class="metadata--bottom"><span class="metadata--itemTitle">Bottom Lat: </span><span class="metadata--item metadata--tech"></span></li>
+          <li class="metadata--top"><span class="metadata--itemTitle">Top Lat: </span><span class="metadata--item metadata--tech"></span></li>
+          <li class="metadata--minZoom"><span class="metadata--itemTitle">Min Zoom: </span><span class="metadata--item metadata--tech"></span></li>
+          <li class="metadata--maxZoom"><span class="metadata--itemTitle">Max Zoom: </span><span class="metadata--item metadata--tech"></span></li>
         </ul>
+        <div class="divider"></div>
         <h3>Code</h3>
         <button>Copy Code</button>
       </div>
     </div>
     <div class="l-row search-container">
+      <div class="logo"><a href="http://www.axismaps.com"><img src="img/logo.png" /></a></div>
       <div class="search">
         <span class="search--title">Search:</span>
         <div class="search--container">
@@ -63,6 +71,7 @@
       </div>
       <div class="timeline">
       </div>
+    </div>
     </div>
   
   <!-- build:js js/{{site}}.js -->

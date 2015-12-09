@@ -7,11 +7,12 @@ Axis Maps
 
 html,
 body{
-  font-family: 'Arial', sans-serif; /* text/default font */
+  font-family: 'IM Fell French Canon', serif; /* text/default font */
+  font-size: 16px;
 }
 
 .display-font {
-  font-family: 'Arial', sans-serif;
+  font-family: 'IM Fell French Canon SC', serif;
   font-weight: 700;
 }
 
@@ -45,4 +46,10 @@ a:visited {
 
 .btn {
   border: 1px solid #666;
+}
+
+.divider {
+  border-top: 5px double #4d433f;
+  margin: 0 auto;
+  width: 50%;
 }
