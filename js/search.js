@@ -1,12 +1,23 @@
 function buildSearch() {
   $('.search--bar').on('keydown', function(e) {
     if(e.keyCode == 13) {
-      var value = $(this).val();
-      filters.push(value);
-      $(document).trigger('filter:');
+      var value = $(this).val().trim();
       
-      addSearchTerm(value);
-      $('.search--bar').val('');
+      if(value !== '') {
+        if(value.indexOf(' ') >= 0) {
+          value = value.split(' ');
+          value.forEach(function(v) {
+            filters.push(v);
+            addSearchTerm(v);
+          });
+        } else {
+          filters.push(value);
+          addSearchTerm(value);
+        }
+        
+        $(document).trigger('filter:');
+        $('.search--bar').val('');
+      }
     }
   });
 }

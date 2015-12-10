@@ -11,9 +11,11 @@ function buildTimeline() {
   
   //binNum, binnedData, and dateDomain could be simplified, but I'm leaving it in case binWdith changes from a single year
   var binNum = w / binWidth;
-  var binnedData = _.toArray(_.groupBy(data.maps, function(v, k) {
+  var binnedData = _.toArray(_.sortBy(_.groupBy(data.maps, function(v, k) {
     var mod = +v.date % binWidth;
     return +v.date - mod;
+  }), function(v) {
+    return v.date;
   }));
   var dateDomain = [+binnedData[0][0].date - binWidth*2, +binnedData[binnedData.length-1][0].date + binWidth*2];
   
@@ -62,7 +64,7 @@ function buildTimeline() {
     .attr('width', rectWidth)
     .attr('height', rectHeight)
     .attr('x', binWidth/2)
-    .attr('y', function(d, i) { return (h - paddingBottom - rectHeight - 8) - i * (rectHeight + 2); })
+    .attr('y', function(d, i) { return (h - paddingBottom - rectHeight - 10) - i * (rectHeight + 2); })
     .on('mouseover', function(d) { $(document).trigger('highlight:', +d.number) })
     .on('mouseout', function(d) { $(document).trigger('dehighlight:', +d.number) })
     .on('click', function(d) { $(document).trigger('select:', +d.number) });
@@ -95,6 +97,6 @@ function filterTimeline() {
         return _.indexOf(_.pluck(data.filtered, 'number'), d.number) == -1 ? false : true;
       })
       .classed({'hidden': false, 'shown': true})
-      .attr('y', function(d, i) { return (h - paddingBottom - rectHeight - 8) - i * (rectHeight + 2); });
+      .attr('y', function(d, i) { return (h - paddingBottom - rectHeight - 10) - i * (rectHeight + 2); });
   });
 }

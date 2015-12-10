@@ -1,6 +1,8 @@
 function drawMapList() {
-  var dateSorted = _.groupBy(data.filtered, function(v, k) {
+  var dateSorted = _.sortBy(_.groupBy(data.filtered, function(v) {
     return +v.date;
+  }), function(v) {
+    return v.date
   });
   
   $('.map-list h3, .map-list--list li, .map-list--fleur, .map-list--link').remove();
