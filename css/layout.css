@@ -5,7 +5,7 @@ Axis Maps
 
 body {
   background-color: #f7f4ef;
-  border: 2px solid #4d433f;
+  border: 2px solid #71696D;
   box-sizing: border-box;
   height: calc(100% - 20px);
   margin: 10px;
@@ -14,7 +14,7 @@ body {
 }
 
 .main-border {
-  border: 6px solid #4d433f;
+  border: 6px solid #71696D;
   box-sizing: border-box;
   height: 100%;
   width: 100%;
