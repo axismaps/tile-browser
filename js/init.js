@@ -110,4 +110,7 @@ function initCustomEvents() {
 }
 
 function initUIEvents() {
+  $('.about--close').click(function() {
+    $('.about').hide();
+  });
 }
