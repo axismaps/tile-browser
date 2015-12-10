@@ -53,3 +53,29 @@ a:visited {
   margin: 0 auto;
   width: 50%;
 }
+
+.logo {
+  color: #4d433f;
+  font-family: 'IM Fell French Canon SC', serif;
+  font-size: 20px;
+  line-height: 40px;
+}
+
+.logo span {
+}
+
+.logo a {
+  color: #666;
+  text-decoration: none;
+}
+
+.logo a:hover {
+  color: #333;
+  text-decoration: underline;
+}
+
+.logo img {
+  height: 40px;
+  margin-left: 10px;
+  vertical-align: top;
+}
