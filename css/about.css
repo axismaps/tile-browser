@@ -1,3 +1,12 @@
+.modal {
+  background-color: rgba(247,244,239, 0.8);
+  cursor: initial;
+  height: 100%;
+  position: absolute;
+  width: 100%;
+  z-index: 9998;
+}
+
 .about {
   background-color: #f7f4ef;
   border: 2px solid #4d433f;
