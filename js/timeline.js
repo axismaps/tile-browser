@@ -11,9 +11,11 @@ function buildTimeline() {
   
   //binNum, binnedData, and dateDomain could be simplified, but I'm leaving it in case binWdith changes from a single year
   var binNum = w / binWidth;
-  var binnedData = _.toArray(_.groupBy(data.maps, function(v, k) {
+  var binnedData = _.toArray(_.sortBy(_.groupBy(data.maps, function(v, k) {
     var mod = +v.date % binWidth;
     return +v.date - mod;
+  }), function(v) {
+    return v.date;
   }));
   var dateDomain = [+binnedData[0][0].date - binWidth*2, +binnedData[binnedData.length-1][0].date + binWidth*2];
   
