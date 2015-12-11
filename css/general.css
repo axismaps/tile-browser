@@ -19,34 +19,10 @@ body{
 
 
 /* Colors */
-a {
-}
-
-a:hover,
-a:visited {
- 
-}
-
 /* if the highlight color changes based on JS, don't use this class, use js-highlight-color instead */
-.bg-highlight-color {
-  background-color: #123abc;
-}
-
-.highlight-color {
-  color: #123abc;
-}
-
-.horz-bar,
-.vert-bar {
-  border-color: #252525;
-}
 
 
 /* Misc General styles */
-
-.btn {
-  border: 1px solid #666;
-}
 
 .divider {
   border-top: 5px double #4d433f;

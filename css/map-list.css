@@ -48,10 +48,3 @@
   text-indent: -10px;
   width: 80%;
 }
-
-.map-list--link:hover {
-}
-
-.map-list--link.selected.a {
-  background-color: #500F14;
-}
