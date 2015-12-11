@@ -11,13 +11,13 @@ var rectStyle = {
   fill: false,
   color: '#4d433f',
   weight: 3,
-  opacity: 0.5
+  opacity: 0.6
 };
 
 var highlight = {
   color: '#82332E',
   weight: 5,
-  opacity: 0.8
+  opacity: 0.9
 };
 
 function initMap() {
