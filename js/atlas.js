@@ -21,8 +21,11 @@ var highlight = {
 function initMap() {
   atlas = L.map('atlas').setView([40, -80], 4);
 
-  L.tileLayer('//stamen-tiles-{s}.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}.png', {
-    attribution: 'Basemap tiles by Stamen Design, under CC BY 3.0. Data by OpenStreetMap, under ODbL'
+  var accessToken = 'pk.eyJ1Ijoia2luZ2Zpc2hlcjEzIiwiYSI6ImNpZ251ZXVtNjAwYnptZmtvcGtvN3ExZnkifQ.izOrBxbljrnyNWS1EZcWSw';
+  
+  L.mapboxGL({
+    accessToken: accessToken,
+    style: 'mapbox://styles/kingfisher13/cii1tnkn901349nkpky2dmylk'
   }).addTo(atlas);
   
   mapLayer = L.featureGroup().addTo(atlas);
