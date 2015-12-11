@@ -1,0 +1,13 @@
+{
+  "name": "mapbox-gl-leaflet",
+  "homepage": "https://github.com/mapbox/mapbox-gl-leaflet",
+  "_release": "7a0d12af35",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "7a0d12af357416b562c0799ad4d9d64b41db24d4"
+  },
+  "_source": "git://github.com/mapbox/mapbox-gl-leaflet.git",
+  "_target": "master",
+  "_originalSource": "mapbox/mapbox-gl-leaflet"
+}

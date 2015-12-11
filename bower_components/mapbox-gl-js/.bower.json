@@ -1,0 +1,14 @@
+{
+  "name": "mapbox-gl-js",
+  "homepage": "https://github.com/mapbox/mapbox-gl-js",
+  "version": "0.12.1",
+  "_release": "0.12.1",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.12.1",
+    "commit": "fa39dad7d4ce40fd8f14943c8d0c790cdce29020"
+  },
+  "_source": "git://github.com/mapbox/mapbox-gl-js.git",
+  "_target": "~0.12.0",
+  "_originalSource": "mapbox/mapbox-gl-js"
+}
