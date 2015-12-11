@@ -106,8 +106,6 @@ function initCustomEvents() {
       });
     } else data.filtered = data.maps;
     
-    console.log(data.filtered);
-    
     drawMapList();
     drawMap();
     filterTimeline();
