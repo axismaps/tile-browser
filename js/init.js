@@ -113,4 +113,8 @@ function initUIEvents() {
   $('.js-about--close').click(function() {
     $('.modal').hide();
   });
+  
+  $(document).on('keydown', function(e) {
+    if(e.keyCode == 27) $('.modal').hide();
+  });
 }

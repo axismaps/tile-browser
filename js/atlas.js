@@ -4,6 +4,8 @@ var histLayer;
 // var histTileURL = '';
 var histTileURL = 'http://bpl-maps2.s3-website-us-east-1.amazonaws.com/';
 // var histTileURL = 'http://www.zoominginonhistory.com/tiles/';
+var mapboxAccessToken = 'pk.eyJ1Ijoia2luZ2Zpc2hlcjEzIiwiYSI6ImNpZ251ZXVtNjAwYnptZmtvcGtvN3ExZnkifQ.izOrBxbljrnyNWS1EZcWSw';
+var mapboxTiles = 'mapbox://styles/kingfisher13/cii1tnkn901349nkpky2dmylk';
 
 var rectStyle = {
   fill: false,
@@ -20,9 +22,10 @@ var highlight = {
 
 function initMap() {
   atlas = L.map('atlas').setView([40, -80], 4);
-
-  L.tileLayer('//stamen-tiles-{s}.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}.png', {
-    attribution: 'Basemap tiles by Stamen Design, under CC BY 3.0. Data by OpenStreetMap, under ODbL'
+  
+  L.mapboxGL({
+    accessToken: mapboxAccessToken,
+    style: mapboxTiles
   }).addTo(atlas);
   
   mapLayer = L.featureGroup().addTo(atlas);

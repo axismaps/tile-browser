@@ -7,6 +7,8 @@
     "normalize.css": "~3.0.3",
     "leaflet": "~0.7.7",
     "papaparse": "papa-parse#~4.1.2",
-    "d3": "~3.5.10"
+    "d3": "~3.5.10",
+    "mapbox-gl-leaflet": "mapbox/mapbox-gl-leaflet#master",
+    "mapbox-gl-js": "mapbox/mapbox-gl-js#~0.12.0"
   }
 }

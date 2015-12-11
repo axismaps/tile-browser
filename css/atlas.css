@@ -1,5 +1,5 @@
 .atlas--border {
-  border: 6px solid #4d433f;
+  border: 6px solid #665C5C;
   border-right: none;
   border-top: none;
   box-sizing: border-box;
@@ -10,10 +10,10 @@
 }
 
 .atlas--border-right {
-    border-right: 6px solid #4d433f;
+    border-right: 6px solid #71696D;
 }
 
 .atlas {
-  border: 2px solid #4d433f;
+  border: 2px solid #71696D;
   border-top: none;
 }
