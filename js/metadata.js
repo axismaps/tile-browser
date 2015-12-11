@@ -27,10 +27,9 @@ function buildMetadata(map) {
       attributionControl: false
     });
     
-    
     L.mapboxGL({
       accessToken: mapboxAccessToken,
-      style: 'mapbox://styles/kingfisher13/cii1tnkn901349nkpky2dmylk'
+      style: mapboxTiles
     }).addTo(mdmap);
   }
   

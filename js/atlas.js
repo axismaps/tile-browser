@@ -5,6 +5,7 @@ var histLayer;
 var histTileURL = 'http://bpl-maps2.s3-website-us-east-1.amazonaws.com/';
 // var histTileURL = 'http://www.zoominginonhistory.com/tiles/';
 var mapboxAccessToken = 'pk.eyJ1Ijoia2luZ2Zpc2hlcjEzIiwiYSI6ImNpZ251ZXVtNjAwYnptZmtvcGtvN3ExZnkifQ.izOrBxbljrnyNWS1EZcWSw';
+var mapboxTiles = 'mapbox://styles/kingfisher13/cii1tnkn901349nkpky2dmylk';
 
 var rectStyle = {
   fill: false,
@@ -24,7 +25,7 @@ function initMap() {
   
   L.mapboxGL({
     accessToken: mapboxAccessToken,
-    style: 'mapbox://styles/kingfisher13/cii1tnkn901349nkpky2dmylk'
+    style: mapboxTiles
   }).addTo(atlas);
   
   mapLayer = L.featureGroup().addTo(atlas);
