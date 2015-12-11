@@ -8,20 +8,25 @@ var selected = 0;
 
 $(document).ready(function() {
   initData();
+});
+
+function init() {
   initMap();
   initCustomEvents();
   initUIEvents();
-});
+
+  drawMap();
+  drawMapList();
+  buildTimeline();
+  buildSearch();
+}
 
 function initData() {
   $.get('data/maps.csv', function(m) {
     data.maps = _.indexBy( Papa.parse( m, { header: true } ).data, "number" );
-    console.log(data.maps);
     data.filtered = data.maps;
-    drawMap();
-    drawMapList();
-    buildTimeline();
-    buildSearch();
+    
+    init();
   });
 }
 
@@ -100,8 +105,6 @@ function initCustomEvents() {
         }) ? true : false;
       });
     } else data.filtered = data.maps;
-    
-    console.log(data.filtered);
     
     drawMapList();
     drawMap();

@@ -11,17 +11,22 @@ var rectStyle = {
   fill: false,
   color: '#4d433f',
   weight: 3,
-  opacity: 0.5
+  opacity: 0.6
 };
 
 var highlight = {
   color: '#82332E',
   weight: 5,
-  opacity: 0.8
+  opacity: 0.9
 };
 
 function initMap() {
-  atlas = L.map('atlas').setView([40, -80], 4);
+  atlas = L.map('atlas', {
+    attributionControl: false,
+    minZoom: 2
+  }).setView([40, -80], 4);
+  
+  L.control.attribution().addAttribution('© Mapbox © OpenStreetMap').addTo(atlas);
   
   L.mapboxGL({
     accessToken: mapboxAccessToken,
