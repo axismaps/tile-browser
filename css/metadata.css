@@ -1,5 +1,5 @@
 .metadata {
-  border: 2px solid #71696D;
+  border: 2px solid #665C5C;
   box-sizing: border-box;
   margin: 2px;
   overflow-y: scroll;
@@ -22,13 +22,13 @@
 }
 
 .metadata--map-border {
-  border: 2px solid #71696D;
+  border: 2px solid #665C5C;
   padding: 2px;
   width: 100%;
 }
 
 #metadata--map {
-  border: 6px solid #71696D;
+  border: 6px solid #665C5C;
   box-sizing: border-box;
   height: 250px;
   width: 100%;
