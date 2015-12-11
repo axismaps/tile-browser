@@ -21,7 +21,11 @@ var highlight = {
 };
 
 function initMap() {
-  atlas = L.map('atlas').setView([40, -80], 4);
+  atlas = L.map('atlas', {
+    attributionControl: false
+  }).setView([40, -80], 4);
+  
+  L.control.attribution().addAttribution('© Mapbox © OpenStreetMap').addTo(atlas);
   
   L.mapboxGL({
     accessToken: mapboxAccessToken,
