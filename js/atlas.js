@@ -22,7 +22,8 @@ var highlight = {
 
 function initMap() {
   atlas = L.map('atlas', {
-    attributionControl: false
+    attributionControl: false,
+    minZoom: 2
   }).setView([40, -80], 4);
   
   L.control.attribution().addAttribution('© Mapbox © OpenStreetMap').addTo(atlas);
