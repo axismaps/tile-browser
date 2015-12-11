@@ -4,6 +4,7 @@ var histLayer;
 // var histTileURL = '';
 var histTileURL = 'http://bpl-maps2.s3-website-us-east-1.amazonaws.com/';
 // var histTileURL = 'http://www.zoominginonhistory.com/tiles/';
+var mapboxAccessToken = 'pk.eyJ1Ijoia2luZ2Zpc2hlcjEzIiwiYSI6ImNpZ251ZXVtNjAwYnptZmtvcGtvN3ExZnkifQ.izOrBxbljrnyNWS1EZcWSw';
 
 var rectStyle = {
   fill: false,
@@ -20,11 +21,9 @@ var highlight = {
 
 function initMap() {
   atlas = L.map('atlas').setView([40, -80], 4);
-
-  var accessToken = 'pk.eyJ1Ijoia2luZ2Zpc2hlcjEzIiwiYSI6ImNpZ251ZXVtNjAwYnptZmtvcGtvN3ExZnkifQ.izOrBxbljrnyNWS1EZcWSw';
   
   L.mapboxGL({
-    accessToken: accessToken,
+    accessToken: mapboxAccessToken,
     style: 'mapbox://styles/kingfisher13/cii1tnkn901349nkpky2dmylk'
   }).addTo(atlas);
   

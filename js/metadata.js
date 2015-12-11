@@ -26,7 +26,12 @@ function buildMetadata(map) {
       zoomControl: false,
       attributionControl: false
     });
-    L.tileLayer('//stamen-tiles-{s}.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}.png').addTo(mdmap);
+    
+    
+    L.mapboxGL({
+      accessToken: mapboxAccessToken,
+      style: 'mapbox://styles/kingfisher13/cii1tnkn901349nkpky2dmylk'
+    }).addTo(mdmap);
   }
   
   mdmap.fitBounds([[map.bottom, map.left], [map.top, map.right]]);
