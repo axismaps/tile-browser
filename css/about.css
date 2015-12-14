@@ -2,7 +2,9 @@
   background-color: rgba(247,244,239, 0.8);
   cursor: initial;
   height: 100%;
+  left: 0;
   position: absolute;
+  top: 0;
   width: 100%;
   z-index: 9998;
 }
@@ -10,15 +12,16 @@
 .about {
   background-image: url('../img/about-modal.png');
   background-repeat: no-repeat;
-  background-size: contain;
-  height: 80%;
+  background-size: cover;
   margin: 0 auto;
-  padding: 120px 100px 100px 120px;
-  width: 60%;
+  padding: 150px 100px 100px 120px;
   z-index: 9999;
 }
 
 .about--content {
+  margin: 0 auto;
+  max-width: 1300px;
+  min-width: 930px;
   text-align: center;
 }
 
