@@ -13,15 +13,11 @@
 .x-axis path {
   fill: none;
   stroke: #786f6b;
-  stroke-width: 10;
 }
 
 .x-axis-border {
   fill: none;
-  height: 10px;
   stroke: #786f6b;
-  stroke-width: 2;
-  width: 10;
 }
 
 .timeline--dot {
