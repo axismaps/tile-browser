@@ -11,6 +11,7 @@
   border: none;
   color: #666;
   cursor: pointer;
+  display: flex;
   font-size: 20px;
   font-style: italic;
   margin-bottom: 10px;
