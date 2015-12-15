@@ -45,6 +45,10 @@
   padding-left: 10px;
 }
 
+.about--content h1 {
+  margin-top: 0;
+}
+
 .about--content p {
   font-size: 20px;
   margin: 1em auto;
