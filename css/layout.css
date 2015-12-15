@@ -3,18 +3,18 @@ Axis Maps
 - Project specific Layout CSS rules
 -------------------------*/
 
-body {
+.body--border {
   background-color: #f7f4ef;
-  border: 2px solid #665C5C;
+  border: 2px solid #786f6b;
   box-sizing: border-box;
-  height: calc(100% - 20px);
-  margin: 10px;
+  height: calc(100% - 22px);
+  margin: 9px;
   padding: 2px;
-  width: initial;
+  width: calc(100% - 22px);
 }
 
 .main-border {
-  border: 6px solid #665C5C;
+  border: 6px solid #786f6b;
   box-sizing: border-box;
   height: 100%;
   width: 100%;

@@ -2,30 +2,32 @@
   background-color: rgba(247,244,239, 0.8);
   cursor: initial;
   height: 100%;
+  left: 0;
   position: absolute;
+  top: 0;
   width: 100%;
-  z-index: 9998;
+  z-index: 1001;
 }
 
-.about {
-  background-image: url('../img/about-modal.png');
-  background-repeat: no-repeat;
-  background-size: contain;
-  height: 80%;
-  margin: 0 auto;
-  padding: 120px 100px 100px 120px;
-  width: 60%;
-  z-index: 9999;
+.modal--img {
+  position: absolute;
+  text-align: center;
+  width: 100%;
 }
 
 .about--content {
-  text-align: center;
+  box-sizing: border-box;
+  margin: 0 auto;
+  padding: 150px 100px 100px 120px;
+  position: relative;
+  text-align: center; 
+  width: 1200px;
 }
 
 .about--close-button {
   background-color: initial;
   border: none;
-  color: #666;
+  color: #786f6b;
   cursor: pointer;
   float: right;
   font-size: 20px;
@@ -34,16 +36,20 @@
 }
 
 .about--close-button:hover {
-  color: #333;
+  color: #4d433f;
 }
 
-.about h1, .about h2 {
+.about--content h1, .about--content h2 {
   color: #4d433f;
   font-family: 'IM Fell French Canon SC', serif;
   padding-left: 10px;
 }
 
-.about p {
+.about--content h1 {
+  margin-top: 0;
+}
+
+.about--content p {
   font-size: 20px;
   margin: 1em auto;
   text-align: left;
@@ -51,11 +57,11 @@
 }
 
 .about--close-link {
-  color: #666;
+  color: #786f6b;
   font-style: italic;
   text-decoration: none;
 }
 
 .about--close-link:hover {
-  color: #333;
+  color: #4d433f;
 }

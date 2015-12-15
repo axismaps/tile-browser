@@ -11,6 +11,11 @@ body{
   font-size: 16px;
 }
 
+body {
+  box-sizing: border-box;
+  padding: 1px;
+}
+
 .display-font {
   font-family: 'IM Fell French Canon SC', serif;
   font-weight: 700;
@@ -41,12 +46,12 @@ body{
 }
 
 .logo a {
-  color: #666;
+  color: #786f6b;
   text-decoration: none;
 }
 
 .logo a:hover {
-  color: #333;
+  color: #4d433f;
   text-decoration: underline;
 }
 

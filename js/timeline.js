@@ -18,7 +18,12 @@ function buildTimeline() {
     return v.date;
   }));
   var dateDomain = [+binnedData[0][0].date - binWidth*2, +binnedData[binnedData.length-1][0].date + binWidth*2];
+  var dateRange = dateDomain[1] - dateDomain[0];
   
+  //set the rect height and width based on timeline and data
+  rectHeight = Math.max(Math.floor((h - paddingBottom) / 7 - 2), 2);
+  rectWidth = Math.floor(((w / dateRange) - 2) * 0.75);
+    
   var t = d3.select('.timeline')
     .append('svg')
     .attr('width', w)
@@ -29,12 +34,12 @@ function buildTimeline() {
   var yScale = d3.scale.linear().domain([h, 0]).range([0,20]);
   var yAxis = d3.svg.axis().scale(yScale).orient('left');
   
-  var xScale = d3.scale.linear().domain(dateDomain).range([padding, w - padding*2]);
+  var xScale = d3.scale.linear().domain(dateDomain).range([padding, w - padding*3]);
   var xAxis = d3.svg.axis()
     .scale(xScale)
     .orient('bottom')
     .ticks(20)
-    .tickSize(5)
+    .tickSize(rectHeight/2)
     .tickFormat(d3.format(".0f"));
     
   d3.select('.timeline--svg').append('g')
@@ -42,14 +47,20 @@ function buildTimeline() {
     .attr('transform', 'translate(' + paddingLeft + ', ' + (h - paddingBottom) + ')')
     .call(xAxis);
     
+  var dashWidth = Math.round(d3.select('.x-axis').node().getBBox().width / (d3.selectAll('.tick')[0].length - 1) - 2);
   d3.select('.x-axis path').style({
-    'stroke-dasharray': function() { return '120, 120' }
+    'stroke-dasharray': function() { return dashWidth; },
+    'stroke-width': rectHeight
   });
     
   d3.select('.timeline--svg').append('rect')
     .attr('class', 'x-axis-border')
     .attr('width', w - padding * 2)
-    .attr('transform', 'translate(' + paddingLeft + ', ' + (h - paddingBottom - rectHeight) + ')');
+    .style({
+      'height': rectHeight + 'px',
+      'stroke-width': rectHeight > 4 ? 2 : 1
+    })
+    .attr('transform', 'translate(' + paddingLeft + ', ' + (h - paddingBottom - (rectHeight/2)) + ')');
     
   var bins = t.selectAll('g.bin')
     .data(binnedData)
@@ -64,7 +75,7 @@ function buildTimeline() {
     .attr('width', rectWidth)
     .attr('height', rectHeight)
     .attr('x', binWidth/2)
-    .attr('y', function(d, i) { return (h - paddingBottom - rectHeight - 10) - i * (rectHeight + 2); })
+    .attr('y', function(d, i) { return (h - paddingBottom - rectHeight * 2) - i * (rectHeight + 2); })
     .on('mouseover', function(d) { $(document).trigger('highlight:', +d.number) })
     .on('mouseout', function(d) { $(document).trigger('dehighlight:', +d.number) })
     .on('click', function(d) { $(document).trigger('select:', +d.number) });
@@ -87,9 +98,8 @@ function dehighlightDot(mapNumber) {
 }
 
 function filterTimeline() {
-  var w = $('.timeline').width();
-  var h = $('.timeline').height();
-  
+  var h = $('.timeline--svg').height();
+      
   d3.selectAll('g.bin').each(function(d) {
     d3.select(this).selectAll('.timeline--dot')
       .classed({'hidden': true, 'shown': false})
@@ -97,6 +107,6 @@ function filterTimeline() {
         return _.indexOf(_.pluck(data.filtered, 'number'), d.number) == -1 ? false : true;
       })
       .classed({'hidden': false, 'shown': true})
-      .attr('y', function(d, i) { return (h - paddingBottom - rectHeight - 10) - i * (rectHeight + 2); });
+      .attr('y', function(d, i) { return (h - paddingBottom - rectHeight * 2) - i * (rectHeight + 2); });
   });
 }
