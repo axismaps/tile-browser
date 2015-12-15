@@ -28,7 +28,7 @@
 .about--close-button {
   background-color: initial;
   border: none;
-  color: #666;
+  color: #786f6b;
   cursor: pointer;
   float: right;
   font-size: 20px;
@@ -37,7 +37,7 @@
 }
 
 .about--close-button:hover {
-  color: #333;
+  color: #4d433f;
 }
 
 .about h1, .about h2 {
@@ -54,11 +54,11 @@
 }
 
 .about--close-link {
-  color: #666;
+  color: #786f6b;
   font-style: italic;
   text-decoration: none;
 }
 
 .about--close-link:hover {
-  color: #333;
+  color: #4d433f;
 }
