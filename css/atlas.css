@@ -17,3 +17,10 @@
   border: 2px solid #786f6b;
   border-top: none;
 }
+
+.compass {
+  bottom: 10px;
+  left: 10px;
+  position: absolute;
+  width: 100px;
+}
