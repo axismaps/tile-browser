@@ -34,8 +34,7 @@ function buildMetadata(map) {
   }
   
   mdmap.fitBounds([[map.bottom, map.left], [map.top, map.right]]);
-  if(map.minZoom < 9) mdmap.setZoom(map.minZoom);
-  else mdmap.setZoom(9);
+  if(mdmap.getZoom() > 9) mdmap.setZoom(9);
   
   mdmap.eachLayer(function(v) {
     if(v.feature) mdmap.removeLayer(v);

@@ -1,0 +1,37 @@
+@media (max-width: 1100px) {
+
+.map-list,
+.metadata {
+  padding: 5px 15px 5px 5px;
+}
+
+.map-list--list {
+  padding-left: 0;
+}
+
+.map-list--list li {
+  padding-left: 0;
+}
+
+.metadata--close {
+  font-size: 16px;
+  text-align: left;
+}
+
+.metadata--header {
+  text-align: center;
+}
+
+.divider {
+  width: 70%;
+}
+
+.metadata ul {
+  padding-left: 10px;
+}
+
+.timeline {
+  padding: 5px;
+}
+  
+}

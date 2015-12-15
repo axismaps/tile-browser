@@ -23,72 +23,75 @@
     <link rel="stylesheet" href="css/search.css" />
     <link rel="stylesheet" href="css/timeline.css" />
     <link rel="stylesheet" href="css/map-list.css" />
+    <link rel="stylesheet" href="css/mobile.css" />
     <!-- endbuild -->
   </head>
   
   <body>
-    <div class="modal">
-      <div class="modal--img">
-        <img src='img/about-modal.png' />
-      </div>
-      <div class="about--content">
-        <button class="about--close-button js-about--close"><i class="icon-cancel-circled"></i></button>
-        <h1>A digital cartographic explorer made for the right honorable coder wishing to incorporate historical map tiles into their own product</h1>
-        <h2>Created in Two Thousand and Fifteen by Axis Maps</h2>
-        <div class="divider"></div>
-        <p>Use the search tool, atlas, and map list to find a specific map. Once a map is selected, the historic tiles will appear in the main map window and the metadata sidebar will show. The code snippet that enables use of those tiles will be at the bottom of the metadata sidebar.</p>
-        <p><a class="about--close-link js-about--close" href="#">Continue onto the explorer</a></p>
-      </div>
-    </div>
-    <div class="main-border">
-    <div class="main-container">
-      <div class="map-list">
-        <h1 class="map-list--title">List of Maps</h1>
-        <ul class="map-list--list"></ul>
-      </div>
-      <div class="atlas--border">
-        <div class="atlas" id="atlas"></div>
-      </div>
-      <div class="metadata u-hidden">
-        <button class="metadata--close"><i class="icon-cancel-circled"></i> Return to Browser</button>
-        <div class="metadata--map-border"><div id="metadata--map"></div></div>
-        <h1 class="metadata--header"></h1>
-        <div class="divider"></div>
-        <h3>Metadata</h3>
-        <ul>
-          <li class="metadata--title"><span class="metadata--itemTitle">Title: </span><span class="metadata--item"></span></li>
-          <li class="metadata--author"><span class="metadata--itemTitle">Author: </span><span class="metadata--item"></span></li>
-          <li class="metadata--date"><span class="metadata--itemTitle">Date: </span><span class="metadata--item"></span></li>
-          <li class="metadata--caption"><span class="metadata--itemTitle">Caption: </span><span class="metadata--item"></span></li>
-        </ul>
-        <div class="divider"></div>
-        <h3>Technical Details</h3>
-        <ul>
-          <li class="metadata--left"><span class="metadata--itemTitle">Left Long: </span><span class="metadata--item metadata--tech"></span></li>
-          <li class="metadata--right"><span class="metadata--itemTitle">Right Long: </span><span class="metadata--item metadata--tech"></span></li>
-          <li class="metadata--bottom"><span class="metadata--itemTitle">Bottom Lat: </span><span class="metadata--item metadata--tech"></span></li>
-          <li class="metadata--top"><span class="metadata--itemTitle">Top Lat: </span><span class="metadata--item metadata--tech"></span></li>
-          <li class="metadata--minZoom"><span class="metadata--itemTitle">Min Zoom: </span><span class="metadata--item metadata--tech"></span></li>
-          <li class="metadata--maxZoom"><span class="metadata--itemTitle">Max Zoom: </span><span class="metadata--item metadata--tech"></span></li>
-        </ul>
-        <div class="divider"></div>
-        <h3>Code</h3>
-        <button>Copy Code</button>
-      </div>
-    </div>
-    <div class="l-row search-container">
-      <div class="logo">
-        <span>Made by </span><a href="http://www.axismaps.com" target="_blank">Axis Maps <img src="img/logo.png" /></a>
-      </div>
-      <div class="search">
-        <span class="search--title">Search</span>
-        <div class="search--container">
-          <input class="search--bar" type="text"/>
+    <div class="body--border">
+      <div class="modal">
+        <div class="modal--img">
+          <img src='img/about-modal.png' />
+        </div>
+        <div class="about--content">
+          <button class="about--close-button js-about--close"><i class="icon-cancel-circled"></i></button>
+          <h1>A digital cartographic explorer made for the right honorable coder wishing to incorporate historical map tiles into their own product</h1>
+          <h2>Created in Two Thousand and Fifteen by Axis Maps</h2>
+          <div class="divider"></div>
+          <p>Use the search tool, atlas, and map list to find a specific map. Once a map is selected, the historic tiles will appear in the main map window and the metadata sidebar will show. The code snippet that enables use of those tiles will be at the bottom of the metadata sidebar.</p>
+          <p><a class="about--close-link js-about--close" href="#">Continue onto the explorer</a></p>
         </div>
       </div>
-      <div class="timeline">
+      <div class="main-border">
+        <div class="main-container">
+          <div class="map-list">
+            <h1 class="map-list--title">List of Maps</h1>
+            <ul class="map-list--list"></ul>
+          </div>
+          <div class="atlas--border">
+            <div class="atlas" id="atlas"></div>
+          </div>
+          <div class="metadata u-hidden">
+            <button class="metadata--close"><i class="icon-cancel-circled"></i> Return to Browser</button>
+            <div class="metadata--map-border"><div id="metadata--map"></div></div>
+            <h1 class="metadata--header"></h1>
+            <div class="divider"></div>
+            <h3>Metadata</h3>
+            <ul>
+              <li class="metadata--title"><span class="metadata--itemTitle">Title: </span><span class="metadata--item"></span></li>
+              <li class="metadata--author"><span class="metadata--itemTitle">Author: </span><span class="metadata--item"></span></li>
+              <li class="metadata--date"><span class="metadata--itemTitle">Date: </span><span class="metadata--item"></span></li>
+              <li class="metadata--caption"><span class="metadata--itemTitle">Caption: </span><span class="metadata--item"></span></li>
+            </ul>
+            <div class="divider"></div>
+            <h3>Technical Details</h3>
+            <ul>
+              <li class="metadata--left"><span class="metadata--itemTitle">Left Long: </span><span class="metadata--item metadata--tech"></span></li>
+              <li class="metadata--right"><span class="metadata--itemTitle">Right Long: </span><span class="metadata--item metadata--tech"></span></li>
+              <li class="metadata--bottom"><span class="metadata--itemTitle">Bottom Lat: </span><span class="metadata--item metadata--tech"></span></li>
+              <li class="metadata--top"><span class="metadata--itemTitle">Top Lat: </span><span class="metadata--item metadata--tech"></span></li>
+              <li class="metadata--minZoom"><span class="metadata--itemTitle">Min Zoom: </span><span class="metadata--item metadata--tech"></span></li>
+              <li class="metadata--maxZoom"><span class="metadata--itemTitle">Max Zoom: </span><span class="metadata--item metadata--tech"></span></li>
+            </ul>
+            <div class="divider"></div>
+            <h3>Code</h3>
+            <button>Copy Code</button>
+          </div>
+        </div>
+        <div class="l-row search-container">
+          <div class="logo">
+            <span>Made by </span><a href="http://www.axismaps.com" target="_blank">Axis Maps <img src="img/logo.png" /></a>
+          </div>
+          <div class="search">
+            <span class="search--title">Search</span>
+            <div class="search--container">
+              <input class="search--bar" type="text"/>
+            </div>
+          </div>
+          <div class="timeline">
+          </div>
+        </div>
       </div>
-    </div>
     </div>
   
   
