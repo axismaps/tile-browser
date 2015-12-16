@@ -32,12 +32,14 @@ function initData() {
 
 function initCustomEvents() {
   $(document).on('highlight:', function(e, mapNumber) {
-    var leafletLayer = findLeafletLayer(mapNumber);
-    if(leafletLayer) leafletLayer.setStyle(highlight);
-    
-    $('.map-list--link[data-number=' + mapNumber + ']').addClass('selected').prev().css('visibility', 'visible');
-    
-    highlightDot(mapNumber);
+    if(selected !== mapNumber) {
+      var leafletLayer = findLeafletLayer(mapNumber);
+      if(leafletLayer) leafletLayer.setStyle(highlight);
+      
+      $('.map-list--link[data-number=' + mapNumber + ']').addClass('selected').prev().css('visibility', 'visible');
+      
+      highlightDot(mapNumber);
+    }
   });
   
   $(document).on('dehighlight:', function(e, mapNumber) {
@@ -54,41 +56,35 @@ function initCustomEvents() {
   $(document).on('select:', function(e, mapNumber) {
     if(selected !== mapNumber) {
       $(document).trigger('deselect:');
+      
+      selected = mapNumber;
+      
+      $(document).trigger('highlight:', mapNumber);
           
       buildMetadata(data.filtered[mapNumber]);
     
       atlas.removeLayer(mapLayer);
       selectMap(mapNumber);
       
-      $('.map-list--link[data-number=' + mapNumber + ']')
-        .addClass('selected')
-        .prev().css({
-          'visibility': 'visible',
-          'background-image': 'url("img/fleur-symbol-selected.png")'
-        });
-      highlightDot(mapNumber);
-      
-      selected = mapNumber;
+      $('.map-list--link.selected')
+        .prev().css('background-image', 'url("img/fleur-symbol-selected.png")');
     }
   });
   
   $(document).on('deselect:', function(e) {
     if(selected !== 0) {
+      var old = selected;
+      selected = 0;
+      
+      atlas.addLayer(mapLayer).removeLayer(histLayer);
+      
+      $(document).trigger('dehighlight:', old);
+      
       $('.metadata').hide();
       $('.atlas--border').removeClass('atlas--border-right');
       $('.map-list--link.selected')
-      .removeClass('selected')
-      .prev().css({
-          'visibility': 'hidden',
-          'background-image': 'url("img/fleur-symbol.png")'
-        });
-      dehighlightDot(selected);
-      
-      atlas.addLayer(mapLayer).removeLayer(histLayer);
-      var leafletLayer = findLeafletLayer(selected);
-      if(leafletLayer) leafletLayer.setStyle(rectStyle);
-      
-      selected = 0;
+        .removeClass('selected')
+        .prev().css('background-image', 'url("img/fleur-symbol.png")');      
     }
   });
   
