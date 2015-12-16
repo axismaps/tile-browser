@@ -21,7 +21,7 @@ function buildTimeline() {
   var dateRange = dateDomain[1] - dateDomain[0];
   
   //set the rect height and width based on timeline and data
-  rectHeight = Math.max(Math.floor((h - paddingBottom) / 7 - 2), 2);
+  rectHeight = Math.max(Math.floor((h - paddingBottom) / 8 - 2), 2);
   rectWidth = Math.floor(((w / dateRange) - 2) * 0.75);
     
   var t = d3.select('.timeline')
@@ -82,19 +82,45 @@ function buildTimeline() {
 }
 
 function highlightDot(mapNumber) {
-  d3.selectAll('.timeline--dot')
+  var dot = d3.selectAll('.timeline--dot')
     .filter(function(d) {
       return +d.number === mapNumber;
     })
-    .classed('highlight', true);
+    .classed('highlight', true)
+    .attr('y', function() { return d3.select(this).node().getBBox().y - rectHeight; })
+    .attr('height', rectHeight * 2);
+    
+  var yPosition = dot.node().getBBox().y;
+    
+  var bin = dot.node().parentNode;
+  d3.select(bin).selectAll('.timeline--dot')
+    .each(function() {
+      d3.select(this).attr('y', function() {
+        var y = d3.select(this).node().getBBox().y;
+        return y >= yPosition ? y : y - rectHeight; 
+      });
+    });
 }
 
 function dehighlightDot(mapNumber) {
-  d3.selectAll('.timeline--dot')
+  var dot = d3.selectAll('.timeline--dot')
     .filter(function(d) {
       return +d.number === mapNumber;
     })
-    .classed('highlight', false);
+    .classed('highlight', false)
+    .attr('y', function() { return d3.select(this).node().getBBox().y + rectHeight; })
+    .attr('height', rectHeight);
+    
+  var yPosition = dot.node().getBBox().y;
+    
+  var bin = dot.node().parentNode;
+  d3.select(bin).selectAll('.timeline--dot')
+    .each(function() {
+      d3.select(this).attr('y', function() { 
+        var y = d3.select(this).node().getBBox().y;
+        return y >= yPosition ? y : y + rectHeight; 
+      });
+    });
 }
 
 function filterTimeline() {
