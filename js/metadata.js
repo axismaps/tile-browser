@@ -10,9 +10,14 @@ function buildMetadata(map) {
   
   $('.metadata--header').text(map.title);
   
+  //fill in each of the details
   _.each(map, function(v, k) {
     if($('.metadata--' + k).length > 0) $('.metadata--' + k + ' .metadata--item').empty().text(map[k]);
   });
+  
+  //populate code snippet and code links
+  $('.metadata--code').text(histTileURL + 'tiles/' + map.number + '/{z}/{x}/{y}.png');
+  $('.metadata--example-link').attr('href', 'example.html?mapNumber=' + map.number + '&bottom=' + map.bottom + '&top=' + map.top + '&left=' + map.left + '&right=' + map.right + '&maxZoom=' + map.maxZoom + '&minZoom=' + map.minZoom);
   
   /* Metadata inset map */
   if(!mdmap) {
