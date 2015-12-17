@@ -29,9 +29,11 @@
   <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
   
   <script>
+    //base URL for the tile server
     var histTileURL = 'http://bpl-maps2.s3-website-us-east-1.amazonaws.com/';
  
     $(document).ready(function() {
+      //various map specific variables used throughout
       var bottom = gup('bottom');
       var top = gup('top');
       var left = gup('left');
@@ -40,28 +42,32 @@
       var minZoom = gup('minZoom');
       var maxZoom = gup('maxZoom');
     
+      //basic map view
       var map = L.map('map', {
         minZoom: minZoom,
         maxZoom: maxZoom
       }).setView([40, -80], minZoom - 1);
       
+      //background layer
       L.tileLayer('//stamen-tiles-{s}.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}.png', {
         attribution: 'Basemap tiles by Stamen Design, under CC BY 3.0. Data by OpenStreetMap, under ODbL'
       }).addTo(map);
       
+      //bounds for the historic map
       var histBounds = [
         [bottom, left],
         [top, right]
       ];
       
+      //zoom to the historic map on first run
       map.fitBounds(histBounds);
       
+      //get the appropriate tiles from the server and add to the map
       histLayer = L.tileLayer(histTileURL + "tiles/" + mapNumber + "/{z}/{x}/{y}.png", {
-        tms : true,
+        tms : true, //reverses y axis numbering
         bounds: histBounds,
         minZoom: minZoom,
-        maxZoom: maxZoom,
-        maxNativeZoom: maxZoom
+        maxZoom: maxZoom
       }).addTo(map);      
     });
   </script>
