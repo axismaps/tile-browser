@@ -84,10 +84,6 @@ function buildTimeline() {
 }
 
 function highlightDot(mapNumber) {
-    console.log('highlight ' + mapNumber);
-
-  // d3.selectAll('.timeline--dot').transition(); // stop all running transitions
-  
   var dot = d3.selectAll('.timeline--dot')
     .filter(function(d) { return +d.number === mapNumber; })
     .classed('highlight', true);
@@ -97,13 +93,28 @@ function highlightDot(mapNumber) {
     .transition()
     .duration(animDur)
     .attr('y', function(d, i) {
+      //current refers to the dot in this loop
+      //highlight refers to the dot in the function - the one being made red
+      
       var highlightedY = dot.node().getBBox().y;
-      var originalY = (timeH - paddingBottom - rectHeight * 2) - i * (rectHeight + 2);
-      var finalY = d3.select(this).classed('highlight') ? originalY - (rectHeight * d3.select(bin).selectAll('.timeline--dot.highlight').size()) : originalY;
-      console.log(d3.select(this).classed('highlight'));
-      console.log(originalY, highlightedY, finalY, d3.select(bin).selectAll('.timeline--dot.highlight').size(), finalY - (rectHeight * d3.select(bin).selectAll('.timeline--dot.highlight').size()));
-      console.log(originalY >= highlightedY ? finalY : finalY - (rectHeight * d3.select(bin).selectAll('.timeline--dot.highlight').size()));
-      return originalY >= highlightedY ? finalY : finalY - (rectHeight * d3.select(bin).selectAll('.timeline--dot.highlight').size()); 
+      var currentOriginalY = (timeH - paddingBottom - rectHeight * 2) - i * (rectHeight + 2);
+      
+      var currentAlreadyRed = d3.select(this).classed('highlight');
+      var currentWithRedOffset = currentAlreadyRed ? currentOriginalY - rectHeight : currentOriginalY;
+      
+      var numRed = d3.select(bin).selectAll('.timeline--dot.highlight').size();
+      var aboveHighlightWithOffset = currentOriginalY - rectHeight * numRed;
+      
+      
+      if(numRed == 2 && currentOriginalY >= highlightedY ) {
+        var redY = d3.selectAll('.timeline--dot.highlight').filter(function(d) { return +d.number !== mapNumber; }).node().getBBox().y;
+        if(currentOriginalY < redY) {
+          currentWithRedOffset = currentWithRedOffset - rectHeight;
+        }
+      }
+      
+      var finalY = currentOriginalY >= highlightedY ? currentWithRedOffset : aboveHighlightWithOffset;
+      return finalY;
     })
     .transition()
     .attr('height', function() {
@@ -112,9 +123,6 @@ function highlightDot(mapNumber) {
 }
 
 function dehighlightDot(mapNumber) {
-  console.log('dehighlight ' + mapNumber);
-  // d3.selectAll('.timeline--dot').transition(); // stop all running transitions
-  
   var dot = d3.selectAll('.timeline--dot')
     .filter(function(d) { return +d.number === mapNumber; })
     .classed('highlight', false);
@@ -128,13 +136,37 @@ function dehighlightDot(mapNumber) {
     })
     .transition()
     .attr('y', function(d, i) {
-      var dehighlightedY = dot.node().getBBox().y;
-      var originalY = (timeH - paddingBottom - rectHeight * 2) - i * (rectHeight + 2);
-      var finalY = d3.select(this).classed('highlight') ? originalY - rectHeight : originalY;
-      console.log(originalY, dehighlightedY, finalY, finalY - (rectHeight * d3.select(bin).selectAll('.timeline--dot.highlight').size()));
-      console.log(originalY > dehighlightedY ? finalY : finalY - (rectHeight * d3.select(bin).selectAll('.timeline--dot.highlight').size()));
-      return originalY > dehighlightedY ? finalY : finalY - (rectHeight * d3.select(bin).selectAll('.timeline--dot.highlight').size()); 
+       //current refers to the dot in this loop
+      //highlight refers to the dot in the function - the one being made red
+      
+      var highlightedY = dot.node().getBBox().y;
+      var currentOriginalY = (timeH - paddingBottom - rectHeight * 2) - i * (rectHeight + 2);
+      
+      var currentAlreadyRed = d3.select(this).classed('highlight');
+      var currentWithRedOffset = currentAlreadyRed ? currentOriginalY - rectHeight : currentOriginalY;
+      
+      var numRed = d3.select(bin).selectAll('.timeline--dot.highlight').size();
+      
+      if(numRed == 0) var finalY = currentOriginalY;
+      else {
+        var redY = d3.selectAll('.timeline--dot.highlight').node().getBBox().y;
+        if(currentOriginalY < redY) var finalY = currentOriginalY - rectHeight;
+        else var finalY = currentOriginalY;
+      }
+      
+      // if(numRed == 2 && currentOriginalY >= highlightedY ) {
+        // var redY = d3.selectAll('.timeline--dot.highlight').filter(function(d) { return +d.number !== mapNumber; }).node().getBBox().y;
+        // if(currentOriginalY < redY) {
+          // currentWithRedOffset = currentWithRedOffset - rectHeight;
+        // }
+      // }
+
+      // var finalY =  aboveHighlightWithOffset;      
+      // console.log(currentOriginalY, highlightedY);
+      // console.log(numRed, currentWithRedOffset, aboveHighlightWithOffset, finalY);
+      return finalY;
     });
+  console.log('-----');
 }
 
 function filterTimeline() {
