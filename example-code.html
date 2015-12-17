@@ -1,17 +1,14 @@
 <!doctype html>
 <html>
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1 user-scalable=0">
     <title>Example Historic Map</title>
     
-    <link rel="stylesheet" href="bower_components/leaflet/dist/leaflet.css" />
-    <link rel="stylesheet" href="bower_components/highlight/src/default.css" />
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
     
     <style>
       html, body {
-        background-color: #f7f4ef;
         height: 100%;
         margin: 0;
         padding: 0;
@@ -19,27 +16,17 @@
       }
       
       #map {
-        height: 50%;
-        margin: 20px auto;
-        width: 50%;
-      }
-      
-      #code-block {
-        margin: 0 auto;
-        width: 50%;
+        height: 100%;
+        width: 100%;
       }
     </style>
     
   </head>
   <body>
     <div id="map"></div>
-    <div id="code-block">
-      <pre><code class="code html"></code></pre>
-    </div>
   
-  <script src='bower_components/jquery/dist/jquery.min.js' charset='utf-8'></script>
-  <script src='bower_components/leaflet/dist/leaflet.js'></script>
-  <script src='bower_components/highlight/src/highlight.js'></script>
+  <script src='https://code.jquery.com/jquery-2.1.4.js' charset='utf-8'></script>
+  <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
   
   <script>
     var histTileURL = 'http://bpl-maps2.s3-website-us-east-1.amazonaws.com/';
@@ -75,28 +62,8 @@
         minZoom: minZoom,
         maxZoom: maxZoom,
         maxNativeZoom: maxZoom
-      }).addTo(map);
-      
-      insertCode();
+      }).addTo(map);      
     });
-    
-    function gup( name ) {
-      name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
-      var regexS = "[\\?&]"+name+"=([^&#]*)";
-      var regex = new RegExp( regexS );
-      var results = regex.exec( window.location.href );
-      if( results == null )
-        return "";
-      else
-        return results[1];
-    }
-    
-    function insertCode() {
-      $.get('example-code.html', function(data) {
-        $('.code').text(data);
-        hljs.highlightBlock($('.code')[0]); //not working?
-      });
-    }
   </script>
   </body>
 </html>
