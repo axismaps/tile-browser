@@ -147,26 +147,14 @@ function dehighlightDot(mapNumber) {
       
       var numRed = d3.select(bin).selectAll('.timeline--dot.highlight').size();
       
-      if(numRed == 0) var finalY = currentOriginalY;
+      if(numRed == 0) var finalY = currentWithRedOffset;
       else {
         var redY = d3.selectAll('.timeline--dot.highlight').node().getBBox().y;
-        if(currentOriginalY < redY) var finalY = currentOriginalY - rectHeight;
-        else var finalY = currentOriginalY;
+        if(currentOriginalY < redY) var finalY = currentWithRedOffset - rectHeight;
+        else var finalY = currentWithRedOffset;
       }
-      
-      // if(numRed == 2 && currentOriginalY >= highlightedY ) {
-        // var redY = d3.selectAll('.timeline--dot.highlight').filter(function(d) { return +d.number !== mapNumber; }).node().getBBox().y;
-        // if(currentOriginalY < redY) {
-          // currentWithRedOffset = currentWithRedOffset - rectHeight;
-        // }
-      // }
-
-      // var finalY =  aboveHighlightWithOffset;      
-      // console.log(currentOriginalY, highlightedY);
-      // console.log(numRed, currentWithRedOffset, aboveHighlightWithOffset, finalY);
       return finalY;
     });
-  console.log('-----');
 }
 
 function filterTimeline() {
