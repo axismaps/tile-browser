@@ -53,3 +53,16 @@
 .metadata--tech {
   font-family: 'Inconsolata', monospace;
 }
+
+.metadata--example-code {
+  background-color: initial;
+  border: 2px solid #786f6b;
+  display: block;
+  font-style: italic;
+  margin: 0 auto;
+  padding: 5px 10px;
+}
+
+.metadata--example-code:hover {
+  background-color: #dfdbd6;
+}
