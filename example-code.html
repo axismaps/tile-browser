@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1 user-scalable=0">
+    <title>Example Historic Map</title>
+    
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
+    
+    <style>
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+      }
+      
+      #map {
+        height: 100%;
+        width: 100%;
+      }
+    </style>
+    
+  </head>
+  <body>
+    <div id="map"></div>
+  
+  <script src='https://code.jquery.com/jquery-2.1.4.js' charset='utf-8'></script>
+  <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
+  
+  <script>
+    var histTileURL = 'http://bpl-maps2.s3-website-us-east-1.amazonaws.com/';
+ 
+    $(document).ready(function() {
+      var bottom = gup('bottom');
+      var top = gup('top');
+      var left = gup('left');
+      var right = gup('right');
+      var mapNumber = gup('mapNumber');
+      var minZoom = gup('minZoom');
+      var maxZoom = gup('maxZoom');
+    
+      var map = L.map('map', {
+        minZoom: minZoom,
+        maxZoom: maxZoom
+      }).setView([40, -80], minZoom - 1);
+      
+      L.tileLayer('//stamen-tiles-{s}.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}.png', {
+        attribution: 'Basemap tiles by Stamen Design, under CC BY 3.0. Data by OpenStreetMap, under ODbL'
+      }).addTo(map);
+      
+      var histBounds = [
+        [bottom, left],
+        [top, right]
+      ];
+      
+      map.fitBounds(histBounds);
+      
+      histLayer = L.tileLayer(histTileURL + "tiles/" + mapNumber + "/{z}/{x}/{y}.png", {
+        tms : true,
+        bounds: histBounds,
+        minZoom: minZoom,
+        maxZoom: maxZoom,
+        maxNativeZoom: maxZoom
+      }).addTo(map);      
+    });
+  </script>
+  </body>
+</html>

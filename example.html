@@ -7,9 +7,11 @@
     <title>Example Historic Map</title>
     
     <link rel="stylesheet" href="bower_components/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="bower_components/highlight/src/styles/color-brewer.css" />
     
     <style>
       html, body {
+        background-color: #f7f4ef;
         height: 100%;
         margin: 0;
         padding: 0;
@@ -17,20 +19,36 @@
       }
       
       #map {
-        height: 100%;
-        width: 100%;
+        border: 2px solid #786f6b;
+        height: 50%;
+        margin: 20px auto;
+        width: 50%;
+      }
+      
+      #code-block {
+        border-left: 6px solid #786f6b;
+        margin: 0 auto 20px;
+        padding-left: 10px;
+        width: 50%;
+      }
+      
+      #code-block code {
+        background-color: initial !important;
       }
     </style>
     
   </head>
   <body>
     <div id="map"></div>
+    <div id="code-block">
+      <pre><code class="html"></code></pre>
+    </div>
   
   <script src='bower_components/jquery/dist/jquery.min.js' charset='utf-8'></script>
   <script src='bower_components/leaflet/dist/leaflet.js'></script>
+  <script src='highlight.js'></script>
   
   <script>
-    var map;
     var histTileURL = 'http://bpl-maps2.s3-website-us-east-1.amazonaws.com/';
  
     $(document).ready(function() {
@@ -42,7 +60,7 @@
       var minZoom = gup('minZoom');
       var maxZoom = gup('maxZoom');
     
-      map = L.map('map', {
+      var map = L.map('map', {
         minZoom: minZoom,
         maxZoom: maxZoom
       }).setView([40, -80], minZoom - 1);
@@ -58,16 +76,18 @@
       
       map.fitBounds(histBounds);
       
-      histLayer = L.tileLayer( histTileURL + "tiles/" + mapNumber + "/{z}/{x}/{y}.png", {
+      histLayer = L.tileLayer(histTileURL + "tiles/" + mapNumber + "/{z}/{x}/{y}.png", {
         tms : true,
         bounds: histBounds,
         minZoom: minZoom,
         maxZoom: maxZoom,
         maxNativeZoom: maxZoom
       }).addTo(map);
+      
+      insertCode();
     });
     
-    function gup( name ){
+    function gup( name ) {
       name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
       var regexS = "[\\?&]"+name+"=([^&#]*)";
       var regex = new RegExp( regexS );
@@ -76,6 +96,25 @@
         return "";
       else
         return results[1];
+    }
+    
+    function insertCode() {
+      $.get('example-code.html', function(data) {
+        //replace text of function call with results of function call
+        data = data.replace("gup('bottom')", gup('bottom'));
+        data = data.replace("gup('top')", gup('top'));
+        data = data.replace("gup('left')", gup('left'));
+        data = data.replace("gup('right')", gup('right'));
+        data = data.replace("gup('mapNumber')", gup('mapNumber'));
+        data = data.replace("gup('minZoom')", gup('minZoom'));
+        data = data.replace("gup('maxZoom')", gup('maxZoom'));
+        
+        $('code').text(data);
+        
+        $('pre code').each(function(i, block) {
+          hljs.highlightBlock(block);
+        });
+      });
     }
   </script>
   </body>
