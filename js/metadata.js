@@ -17,7 +17,7 @@ function buildMetadata(map) {
   
   //populate code snippet and code links
   $('.metadata--code').text(histTileURL + 'tiles/' + map.number + '/{z}/{x}/{y}.png');
-  // $('.metadata--example-code').
+  $('.metadata--example-link').attr('href', 'example.html?mapNumber=' + map.number + '&bottom=' + map.bottom + '&top=' + map.top + '&left=' + map.left + '&right=' + map.right + '&maxZoom=' + map.maxZoom + '&minZoom=' + map.minZoom);
   
   /* Metadata inset map */
   if(!mdmap) {

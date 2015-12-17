@@ -55,14 +55,18 @@
 }
 
 .metadata--example-code {
-  background-color: initial;
   border: 2px solid #786f6b;
-  display: block;
-  font-style: italic;
   margin: 0 auto;
   padding: 5px 10px;
+  text-align: center;
 }
 
 .metadata--example-code:hover {
   background-color: #dfdbd6;
+}
+
+.metadata--example-link {
+  color: #000;
+  font-style: italic;
+  text-decoration: none;
 }
