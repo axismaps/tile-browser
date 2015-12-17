@@ -7,7 +7,7 @@
     <title>Example Historic Map</title>
     
     <link rel="stylesheet" href="bower_components/leaflet/dist/leaflet.css" />
-    <link rel="stylesheet" href="bower_components/highlight/src/default.css" />
+    <link rel="stylesheet" href="bower_components/highlight/src/styles/color-brewer.css" />
     
     <style>
       html, body {
@@ -31,6 +31,10 @@
         padding-left: 10px;
         width: 50%;
       }
+      
+      #code-block code {
+        background-color: initial !important;
+      }
     </style>
     
   </head>
@@ -42,7 +46,7 @@
   
   <script src='bower_components/jquery/dist/jquery.min.js' charset='utf-8'></script>
   <script src='bower_components/leaflet/dist/leaflet.js'></script>
-  <script src='bower_components/highlight/src/highlight.js'></script>
+  <script src='highlight.js'></script>
   
   <script>
     var histTileURL = 'http://bpl-maps2.s3-website-us-east-1.amazonaws.com/';
@@ -104,10 +108,12 @@
         data = data.replace("gup('mapNumber')", gup('mapNumber'));
         data = data.replace("gup('minZoom')", gup('minZoom'));
         data = data.replace("gup('maxZoom')", gup('maxZoom'));
-      
+        
         $('code').text(data);
         
-        hljs.highlightBlock($('code')[0]); //not working?
+        $('pre code').each(function(i, block) {
+          hljs.highlightBlock(block);
+        });
       });
     }
   </script>
