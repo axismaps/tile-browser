@@ -3,7 +3,7 @@ var mapLayer;
 var histLayer;
 // var histTileURL = '';
 var histTileURL = 'http://bpl-maps2.s3-website-us-east-1.amazonaws.com/';
-// var histTileURL = 'http://www.zoominginonhistory.com/tiles/';
+// var histTileURL = 'http://www.zoominginonhistory.com/';
 var mapboxAccessToken = 'pk.eyJ1Ijoia2luZ2Zpc2hlcjEzIiwiYSI6ImNpZ251ZXVtNjAwYnptZmtvcGtvN3ExZnkifQ.izOrBxbljrnyNWS1EZcWSw';
 var mapboxTiles = 'mapbox://styles/kingfisher13/cii1tnkn901349nkpky2dmylk';
 
