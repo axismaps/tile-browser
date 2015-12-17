@@ -25,7 +25,7 @@
       }
       
       #code-block {
-        margin: 0 auto;
+        margin: 0 auto 20px;
         width: 50%;
       }
     </style>
@@ -34,7 +34,7 @@
   <body>
     <div id="map"></div>
     <div id="code-block">
-      <pre><code class="code html"></code></pre>
+      <pre><code class="html"></code></pre>
     </div>
   
   <script src='bower_components/jquery/dist/jquery.min.js' charset='utf-8'></script>
@@ -93,8 +93,18 @@
     
     function insertCode() {
       $.get('example-code.html', function(data) {
-        $('.code').text(data);
-        hljs.highlightBlock($('.code')[0]); //not working?
+        //replace text of function call with results of function call
+        data = data.replace("gup('bottom')", gup('bottom'));
+        data = data.replace("gup('top')", gup('top'));
+        data = data.replace("gup('left')", gup('left'));
+        data = data.replace("gup('right')", gup('right'));
+        data = data.replace("gup('mapNumber')", gup('mapNumber'));
+        data = data.replace("gup('minZoom')", gup('minZoom'));
+        data = data.replace("gup('maxZoom')", gup('maxZoom'));
+      
+        $('code').text(data);
+        
+        hljs.highlightBlock($('code')[0]); //not working?
       });
     }
   </script>
